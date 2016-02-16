@@ -19,7 +19,7 @@
                 <div class="account-wall">
                     <img class="profile-img" src="img/supinfo_logo.png"
                          alt=""/>
-                    <form method="post" class="form-signin">
+                    <form action="login" method="post" class="form-signin">
                         <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username"/>
                         <input type="password" class="form-control" placeholder="Mot de passe" name="password"/>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Connexion</button>
@@ -27,28 +27,13 @@
                 </div>
 
                 <div class="text-center login-message">
-<!--                    <div th:if="param.error">
-                        <p th:text="login.bad_credentials">Bad credentials</p>
-                    </div>
-                    <div th:if="param.logout">
-                        <p th:text="login.has_logout">You have been logged out</p>
-                    </div>-->
+                    <% if(request.getParameter("authFailed") != null
+                            && request.getParameter("authFailed").equals("true")) { %>
+                        <p>Indentifiants incorrect</p>
+                    <% } %>
                 </div>
             </div>
         </div>
     </div>
-        
-        
-<!--        <form method="POST" class="form-signin">
-                            <div>
-                                <input class="form-control" type="text" name="username" placeholder="Nom d'utilisateur" />
-                            </div>
-                            <div>
-                                <input class="form-control" type="password" name="password" placeholder="Mot de passe" />
-                            </div>
-                            <div>
-                                <button class="btn btn-lg btn-primary btn-block" type="submit"><p>Connexion</p></button>
-                            </div>
-                        </form>-->
     </body>
 </html>

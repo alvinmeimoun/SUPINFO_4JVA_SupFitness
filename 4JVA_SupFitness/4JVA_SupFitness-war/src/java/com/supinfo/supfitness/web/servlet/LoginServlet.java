@@ -57,7 +57,7 @@ public class LoginServlet extends HttpServlet {
             response.addCookie(new Cookie("sb_username", username));
             response.sendRedirect("home");
         } else {
-            response.sendRedirect("login");
+            response.sendRedirect("login?authFailed=true");
         }
     }
 
