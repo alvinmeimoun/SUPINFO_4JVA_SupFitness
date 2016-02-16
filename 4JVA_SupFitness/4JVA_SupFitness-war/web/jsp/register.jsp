@@ -1,38 +1,41 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>SupFitness - Register</title>
-    </head>
-    <body>
-        <form method="POST">
+<header>
+            <jsp:include page="../include/header.jsp" />
+</header>
+  <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <h1 class="text-center login-title">Enregistrer vous dès maintenant !</h1>
+                <div class="account-wall">
+        <form action="register" method="POST" class="form-signin">
             <div>
                 <label for="username">Username</label>
-                <input type="text" id="username" name="username" />
+                <input type="text" id="username" name="username" class="form-control" placeholder="Nom d'utilisateur"/>
             </div>
             <div>
                 <label for="firstname">Firstname</label>
-                <input type="text" id="firstname" name="firstname" />
+                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Nom"/>
             </div>
             <div>
                 <label for="lastname">Lastname</label>
-                <input type="text" id="lastname" name="lastname" />
+                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Prénom"/>
             </div>
             
             <div>
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" />
+                <input type="text" id="email" name="email" class="form-control" placeholder="Email" />
             </div>
             
             <div>
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" />
+                <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-control" />
             </div>
             
             <div>
-                <input type="submit" value="Add" />
+                <button type="submit" class="btn btn-lg btn-primary btn-block"  >S'enregistrer</button>
             </div>
         </form>
-    </body>
-</html>
+       </div>
+<footer>
+<jsp:include page="../include/footer.jspf" />
+</footer>

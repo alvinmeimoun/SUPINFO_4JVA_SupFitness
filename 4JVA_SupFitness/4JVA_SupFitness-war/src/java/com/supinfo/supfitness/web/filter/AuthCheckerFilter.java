@@ -41,6 +41,7 @@ public class AuthCheckerFilter implements Filter {
         boolean validCredentials = false;
         String username = "";
         String token = "";
+        String id = "";
         
         for(Cookie c : cookies){
             if("sb_username".equals(c.getName())){
@@ -48,6 +49,9 @@ public class AuthCheckerFilter implements Filter {
             }
             if("sb_token".equals(c.getName())){
                 token = c.getValue();
+            }
+            if("sb_id".equals(c.getName())){
+                id = c.getValue();
             }
         }
         

@@ -64,18 +64,7 @@ public class LoginServlet extends HttpServlet {
         if(user != null && user.getPassword().equals(passwordCrypted)){
             response.addCookie(new Cookie("sb_token", DigestUtils.sha256Hex(username)));
             response.addCookie(new Cookie("sb_username", username));
-            RaceEntity race = new RaceEntity();
-            race.setUser(user);
-            TrackEntity track = new TrackEntity();
-            track.setLatitude(Long.parseLong("1"));
-            track.setLongitude(Long.parseLong("1"));
-            track.setSpeed(Long.parseLong("1"));
-            track.setStartDate(new Date());
-            List<TrackEntity> tracks = new ArrayList<TrackEntity>();
-            tracks.add(track);
-            
-            race.setTracks(tracks);
-            raceFacade.create(race);
+            response.addCookie(new Cookie("sb_id", String.valueOf(user.getId())));
             
             response.sendRedirect("home");
         } else {
