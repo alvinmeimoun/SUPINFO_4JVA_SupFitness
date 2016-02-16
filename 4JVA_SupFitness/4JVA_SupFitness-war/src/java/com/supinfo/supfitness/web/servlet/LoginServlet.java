@@ -5,9 +5,15 @@
  */
 package com.supinfo.supfitness.web.servlet;
 
+import com.supinfo.supfitness.ejb.entity.RaceEntity;
+import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.ejb.entity.UserEntity;
+import com.supinfo.supfitness.ejb.facade.RaceFacade;
 import com.supinfo.supfitness.ejb.facade.UserFacade;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -20,6 +26,9 @@ public class LoginServlet extends HttpServlet {
 
     @EJB
     private UserFacade userFacade;
+    
+    @EJB
+    private RaceFacade raceFacade;
     
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -55,6 +64,19 @@ public class LoginServlet extends HttpServlet {
         if(user != null && user.getPassword().equals(passwordCrypted)){
             response.addCookie(new Cookie("sb_token", DigestUtils.sha256Hex(username)));
             response.addCookie(new Cookie("sb_username", username));
+            RaceEntity race = new RaceEntity();
+            race.setUser(user);
+            TrackEntity track = new TrackEntity();
+            track.setLatitude(Long.parseLong("1"));
+            track.setLongitude(Long.parseLong("1"));
+            track.setSpeed(Long.parseLong("1"));
+            track.setStartDate(new Date());
+            List<TrackEntity> tracks = new ArrayList<TrackEntity>();
+            tracks.add(track);
+            
+            race.setTracks(tracks);
+            raceFacade.create(race);
+            
             response.sendRedirect("home");
         } else {
             response.sendRedirect("login?authFailed=true");
