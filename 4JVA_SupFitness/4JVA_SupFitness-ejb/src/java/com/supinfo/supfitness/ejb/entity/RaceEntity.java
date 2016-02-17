@@ -6,8 +6,10 @@
 package com.supinfo.supfitness.ejb.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -42,20 +46,17 @@ public class RaceEntity implements Serializable {
     public static void setSerialVersionUID(long aSerialVersionUID) {
         serialVersionUID = aSerialVersionUID;
     }
-    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    
     private Long id;
-    
-    @NotNull
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_id")
     private UserEntity user;
-    
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="race")
     private List<TrackEntity> tracks;
+    private Date startDate;
+    private String name;
 
     /**
      * @return the id
      */
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -63,13 +64,17 @@ public class RaceEntity implements Serializable {
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public RaceEntity setId(Long id) {
         this.id = id;
+        return this;
     }
 
     /**
      * @return the user
      */
+    @NotNull
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable = false)
     public UserEntity getUser() {
         return user;
     }
@@ -77,13 +82,15 @@ public class RaceEntity implements Serializable {
     /**
      * @param user the user to set
      */
-    public void setUser(UserEntity user) {
+    public RaceEntity setUser(UserEntity user) {
         this.user = user;
+        return this;
     }
 
     /**
      * @return the tracks
      */
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="race")
     public List<TrackEntity> getTracks() {
         return tracks;
     }
@@ -91,7 +98,32 @@ public class RaceEntity implements Serializable {
     /**
      * @param tracks the tracks to set
      */
-    public void setTracks(List<TrackEntity> tracks) {
+    public RaceEntity setTracks(List<TrackEntity> tracks) {
         this.tracks = tracks;
+        return this;
     }
+
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    @Column(name = "STARTDATE", nullable = false)
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public RaceEntity setStartDate(Date startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    @NotNull
+    @Column(name = "NAME", nullable = false)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
 }

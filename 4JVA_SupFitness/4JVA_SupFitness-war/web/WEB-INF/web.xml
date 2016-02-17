@@ -54,13 +54,22 @@
             30
         </session-timeout>
     </session-config>
+    <!-- Rest API -->
     <servlet>
         <servlet-name>ListTrackRestServlet</servlet-name>
-        <servlet-class>com.supinfo.supfitness.web.servlet.api.ListTrackRestServlet</servlet-class>
+        <servlet-class>com.supinfo.supfitness.web.api.servlet.ListTrackRestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ListTrackRestServlet</servlet-name>
         <url-pattern>/api/listTrack</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AddTrackRestServlet</servlet-name>
+        <servlet-class>com.supinfo.supfitness.web.api.servlet.AddTrackRestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTrackRestServlet</servlet-name>
+        <url-pattern>/api/addTrack</url-pattern>
     </servlet-mapping>
     <!-- Filters -->
     <context-param>
