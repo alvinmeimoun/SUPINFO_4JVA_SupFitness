@@ -1,0 +1,56 @@
+{
+	"id": "0265acc5-98ee-2b67-4bf0-e77aa75020d7",
+	"name": "4JVA_SupFitness",
+	"description": "",
+	"order": [
+		"66050eca-c478-f474-b4ae-b6cd3499d604",
+		"c59ac503-fad4-d54b-ea04-a9342f19814a"
+	],
+	"folders": [],
+	"timestamp": 1455722465132,
+	"owner": "",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "66050eca-c478-f474-b4ae-b6cd3499d604",
+			"headers": "AUTH_USERNAME: test\nAUTH_PASSWORD: test\n",
+			"url": "http://localhost:8080/4JVA_SupFitness-war/api/listTrack?raceId=1",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "GET",
+			"collectionId": "0265acc5-98ee-2b67-4bf0-e77aa75020d7",
+			"data": [],
+			"dataMode": "params",
+			"name": "List Track",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1455722465131,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "c59ac503-fad4-d54b-ea04-a9342f19814a",
+			"headers": "AUTH_USERNAME: test\nAUTH_PASSWORD: test\nContent-Type: application/json\n",
+			"url": "http://localhost:8080/4JVA_SupFitness-war/api/addTrack",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1455723397627,
+			"name": "Add Track",
+			"description": "",
+			"collectionId": "0265acc5-98ee-2b67-4bf0-e77aa75020d7",
+			"responses": [],
+			"rawModeData": "{\n    \"raceId\" : 1,\n    \"longitude\" : 7,\n    \"latitude\" : 43,\n    \"speed\" : 13,\n    \"startDate\" : \"2016-01-23T18:25:43.511Z\"\n}"
+		}
+	]
+}
