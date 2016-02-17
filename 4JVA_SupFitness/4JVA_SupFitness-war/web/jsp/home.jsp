@@ -8,5 +8,3 @@
         <footer>
             <jsp:include page="../include/footer.jspf" />
         </footer>
-    </body>
-</html>

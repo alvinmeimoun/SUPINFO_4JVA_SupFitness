@@ -7,6 +7,7 @@ package com.supinfo.supfitness.ejb.business;
 
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
 import com.supinfo.supfitness.ejb.facade.RaceFacade;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -37,4 +38,9 @@ public class RaceBusiness {
             raceFacade.edit(raceObject);
         }
     }
+    
+      public List<RaceEntity> findAllByUserId(Long id) {
+          
+          return raceFacade.findAllByUserId(id);
+      }
 }

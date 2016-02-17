@@ -30,13 +30,16 @@ public class UserBusiness {
                 isNew = true;
             }
         }
-        
-        
         if(isNew){
             userFacade.create(userObject);
         } else {
             userFacade.edit(userObject);
         }
     }
+    
+     public UserEntity find(Long id) {
+         
+         return userFacade.find(id);
+     }
     
 }

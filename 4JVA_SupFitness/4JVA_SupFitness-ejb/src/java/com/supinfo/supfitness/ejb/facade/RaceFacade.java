@@ -6,11 +6,14 @@
 package com.supinfo.supfitness.ejb.facade;
 
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
+import com.supinfo.supfitness.ejb.entity.RaceEntity_;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -39,19 +42,20 @@ public class RaceFacade {
         return em.find(RaceEntity.class, id);
     }
     
-   /* public TrackEntity findByUsername(String username) throws NoResultException{
+   public List<RaceEntity> findAllByUserId(Long id) throws NoResultException{
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<TrackEntity> criteriaQuery = criteriaBuilder.createQuery(TrackEntity.class);
-        Root<TrackEntity> user = criteriaQuery.from(TrackEntity.class);
+        CriteriaQuery<RaceEntity> criteriaQuery = criteriaBuilder.createQuery(RaceEntity.class);
+        Root<RaceEntity> race = criteriaQuery.from(RaceEntity.class);
         
-        criteriaQuery.where(criteriaBuilder.equal(user.get(TrackEntity_.), username));
+        criteriaQuery.where(criteriaBuilder.equal(race.get(RaceEntity_.user), id));
+        
         
         try{
-            return em.createQuery(criteriaQuery).getSingleResult();
+            return em.createQuery(criteriaQuery).getResultList();
         } catch (NoResultException nre){
             return null;
         }
-    }*/
+    }
 
     public List<RaceEntity> findAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
