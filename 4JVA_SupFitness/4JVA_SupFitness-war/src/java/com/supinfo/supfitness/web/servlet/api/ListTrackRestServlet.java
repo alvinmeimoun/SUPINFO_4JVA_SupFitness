@@ -6,6 +6,7 @@
 package com.supinfo.supfitness.web.servlet.api;
 
 import com.google.gson.Gson;
+import com.supinfo.supfitness.ejb.business.TrackBusiness;
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.ejb.facade.TrackFacade;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ListTrackRestServlet extends HttpServlet {
 
     @EJB
-    TrackFacade trackFacade;
+    TrackBusiness trackBusiness;
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +29,8 @@ public class ListTrackRestServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<TrackEntity> entities = trackFacade.findAll();
+        List<TrackEntity> entities = trackBusiness.findAllTrack(
+                req.getParameter("raceId") == null ? null : Long.parseLong(req.getParameter("raceId")));
         String jsonString = new Gson().toJson(entities);
         
         resp.addHeader("Content-Type", "application.json");

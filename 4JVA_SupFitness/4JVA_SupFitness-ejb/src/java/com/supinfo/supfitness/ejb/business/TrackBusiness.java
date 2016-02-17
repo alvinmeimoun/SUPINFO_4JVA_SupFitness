@@ -7,6 +7,7 @@ package com.supinfo.supfitness.ejb.business;
 
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.ejb.facade.TrackFacade;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -43,4 +44,11 @@ public class TrackBusiness  {
         }
     }
     
+    public List<TrackEntity> findAllTrack(Long raceId){
+        if(raceId == null){
+            return trackFacade.findAll();
+        } else {
+            return trackFacade.findByRaceId(raceId);
+        }
+    }
 }
