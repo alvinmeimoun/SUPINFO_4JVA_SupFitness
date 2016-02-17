@@ -21,6 +21,10 @@ public class RaceBusiness {
     public RaceBusiness(){
         
     }
+    
+    public RaceEntity findOne(Long raceId){
+        return raceFacade.find(raceId);
+    }
 
     public void addOrUpdateRace(RaceEntity raceObject){
         boolean isNew = false;

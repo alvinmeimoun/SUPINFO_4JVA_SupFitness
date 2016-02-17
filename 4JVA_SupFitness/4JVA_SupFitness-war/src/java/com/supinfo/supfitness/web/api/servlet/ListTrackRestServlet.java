@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supinfo.supfitness.web.servlet.api;
+package com.supinfo.supfitness.web.api.servlet;
 
 import com.google.gson.Gson;
 import com.supinfo.supfitness.ejb.business.TrackBusiness;

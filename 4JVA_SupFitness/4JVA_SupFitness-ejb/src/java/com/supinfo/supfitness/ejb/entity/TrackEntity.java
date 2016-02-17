@@ -73,8 +73,9 @@ public class TrackEntity implements Serializable{
     /**
      * @param id the id to set
      */
-    public void setId(Long id) {
+    public TrackEntity setId(Long id) {
         this.id = id;
+        return this;
     }
 
     /**
@@ -87,8 +88,9 @@ public class TrackEntity implements Serializable{
     /**
      * @param longitude the longitude to set
      */
-    public void setLongitude(Long longitude) {
+    public TrackEntity setLongitude(Long longitude) {
         this.longitude = longitude;
+        return this;
     }
 
     /**
@@ -101,8 +103,9 @@ public class TrackEntity implements Serializable{
     /**
      * @param latitude the latitude to set
      */
-    public void setLatitude(Long latitude) {
+    public TrackEntity setLatitude(Long latitude) {
         this.latitude = latitude;
+        return this;
     }
 
     /**
@@ -115,8 +118,9 @@ public class TrackEntity implements Serializable{
     /**
      * @param speed the speed to set
      */
-    public void setSpeed(Long speed) {
+    public TrackEntity setSpeed(Long speed) {
         this.speed = speed;
+        return this;
     }
 
     /**
@@ -129,8 +133,9 @@ public class TrackEntity implements Serializable{
     /**
      * @param startDate the startDate to set
      */
-    public void setStartDate(Date startDate) {
+    public TrackEntity setStartDate(Date startDate) {
         this.startDate = startDate;
+        return this;
     }
 
     /**
@@ -143,8 +148,9 @@ public class TrackEntity implements Serializable{
     /**
      * @param race the race to set
      */
-    public void setRace(RaceEntity race) {
+    public TrackEntity setRace(RaceEntity race) {
         this.race = race;
+        return this;
     }
     
 }
