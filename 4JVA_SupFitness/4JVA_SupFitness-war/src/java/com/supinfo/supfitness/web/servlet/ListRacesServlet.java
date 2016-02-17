@@ -8,6 +8,7 @@ package com.supinfo.supfitness.web.servlet;
 import com.supinfo.supfitness.ejb.business.RaceBusiness;
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
 import com.supinfo.supfitness.ejb.facade.RaceFacade;
+import com.supinfo.supfitness.web.util.ConverterUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -38,7 +39,8 @@ public class ListRacesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Long id = Long.valueOf(String.valueOf(request.getAttribute("userId")));
+        
+       Long id = ConverterUtil.ConvertRequestParameterToLong(request.getAttribute("userId"));
        List<RaceEntity> listRaces = raceBusiness.findAllByUserId(id);
        request.setAttribute("listRaces", listRaces);
        request.getRequestDispatcher("jsp/listRaces.jsp").forward(request, response);

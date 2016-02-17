@@ -2,7 +2,7 @@
 <header>
     <jsp:include page="../include/header.jsp" />
 </header>
-<a href="addRace">Ajouter une foot race</a>
+<a href="AddRace">Ajouter une foot race</a>
 <ul>
             <c:forEach items="${listRaces}" var="race">
                 <li><c:out value="${race.id}" /></li>

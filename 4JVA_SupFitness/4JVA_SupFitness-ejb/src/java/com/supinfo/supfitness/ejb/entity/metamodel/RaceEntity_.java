@@ -5,6 +5,7 @@
  */
 package com.supinfo.supfitness.ejb.entity.metamodel;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -19,4 +20,6 @@ public class RaceEntity_ {
     	public static volatile SingularAttribute<RaceEntity_, Long> id;
         public static volatile SingularAttribute<RaceEntity_, UserEntity_> user;
         public static volatile SingularAttribute<RaceEntity_, List<TrackEntity_>> tracks;
+        public static volatile SingularAttribute<RaceEntity_, String> name;
+        public static volatile SingularAttribute<RaceEntity_, Date> startDate;
 }

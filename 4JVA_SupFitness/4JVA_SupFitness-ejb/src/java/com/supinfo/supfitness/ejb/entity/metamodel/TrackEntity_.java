@@ -17,9 +17,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 public class TrackEntity_ {
     
         public static volatile SingularAttribute<TrackEntity_, Long> id;
-        public static volatile SingularAttribute<TrackEntity_, Long> latitude;
-        public static volatile SingularAttribute<TrackEntity_, Long> longitude;
-        public static volatile SingularAttribute<TrackEntity_, Long> speed;
+        public static volatile SingularAttribute<TrackEntity_, Double> latitude;
+        public static volatile SingularAttribute<TrackEntity_, Double> longitude;
+        public static volatile SingularAttribute<TrackEntity_, Double> speed;
         public static volatile SingularAttribute<TrackEntity_, Date> startDate;
         public static volatile SingularAttribute<TrackEntity_, RaceEntity_> race;
 }
