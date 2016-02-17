@@ -6,7 +6,11 @@
 package com.supinfo.supfitness.ejb.business;
 
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
+import com.supinfo.supfitness.ejb.entity.TrackEntity;
+import com.supinfo.supfitness.ejb.entity.UserEntity;
 import com.supinfo.supfitness.ejb.facade.RaceFacade;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -37,14 +41,20 @@ public class RaceBusiness {
             }
         }
         if(isNew){
+            if(raceObject.getTracks() == null)
+            {
+                List<TrackEntity> tracks = new ArrayList<TrackEntity>();
+                raceObject.setTracks(tracks);
+            }
+    
             raceFacade.create(raceObject);
         } else {
             raceFacade.edit(raceObject);
         }
     }
     
-      public List<RaceEntity> findAllByUserId(Long id) {
+      public List<RaceEntity> findAllByUser(UserEntity user) {
           
-          return raceFacade.findAllByUserId(id);
+          return raceFacade.findAllByUser(user);
       }
 }

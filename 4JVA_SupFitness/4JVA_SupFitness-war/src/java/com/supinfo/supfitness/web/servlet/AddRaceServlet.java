@@ -12,7 +12,14 @@ import com.supinfo.supfitness.ejb.entity.UserEntity;
 import com.supinfo.supfitness.web.util.ConverterUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,11 +51,8 @@ public class AddRaceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        UserEntity user = userBusiness.find(ConverterUtil.ConvertRequestParameterToLong(request.getAttribute("userId")));
-        
-        RaceEntity race = new RaceEntity();
-        race.setUser(user);
-        raceBusiness.addOrUpdateRace(race);
+        request.getRequestDispatcher("jsp/addRace.jsp").forward(request, response);
+
         
     }
 
@@ -63,7 +67,30 @@ public class AddRaceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Long id = ConverterUtil.ConvertRequestParameterToLong(request.getParameter("userId"));
+        UserEntity user = userBusiness.find(id);
+        
+        RaceEntity race = new RaceEntity();
+        race.setName(String.valueOf(request.getParameter("name")));
+        String startDateStr = request.getParameter("startDate");
+        SimpleDateFormat sdf0 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        
+
+        try {
+            //surround below line with try catch block as below code throws checked exception
+            Date startDate0 = sdf0.parse(startDateStr);
+            //Date startDate = sdf.
+            race.setStartDate(startDate0);
+        } catch (ParseException ex) {
+            Logger.getLogger(AddRaceServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
+        race.setUser(user);
+        raceBusiness.addOrUpdateRace(race);
+        RequestDispatcher rd = request.getRequestDispatcher("ListRaces");
+        rd.forward(request, response);
     }
 
     /**

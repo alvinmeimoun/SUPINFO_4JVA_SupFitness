@@ -7,6 +7,7 @@ package com.supinfo.supfitness.ejb.facade;
 
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
 import com.supinfo.supfitness.ejb.entity.RaceEntity_;
+import com.supinfo.supfitness.ejb.entity.UserEntity;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -42,12 +43,12 @@ public class RaceFacade {
         return em.find(RaceEntity.class, id);
     }
     
-   public List<RaceEntity> findAllByUserId(Long id) throws NoResultException{
+   public List<RaceEntity> findAllByUser(UserEntity user) throws NoResultException{
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<RaceEntity> criteriaQuery = criteriaBuilder.createQuery(RaceEntity.class);
         Root<RaceEntity> race = criteriaQuery.from(RaceEntity.class);
         
-        criteriaQuery.where(criteriaBuilder.equal(race.get(RaceEntity_.user), id));
+        criteriaQuery.where(criteriaBuilder.equal(race.get(RaceEntity_.user), user));
         
         
         try{

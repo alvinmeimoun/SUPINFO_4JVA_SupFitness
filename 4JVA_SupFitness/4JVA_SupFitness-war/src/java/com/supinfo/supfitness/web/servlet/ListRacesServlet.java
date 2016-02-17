@@ -6,7 +6,9 @@
 package com.supinfo.supfitness.web.servlet;
 
 import com.supinfo.supfitness.ejb.business.RaceBusiness;
+import com.supinfo.supfitness.ejb.business.UserBusiness;
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
+import com.supinfo.supfitness.ejb.entity.UserEntity;
 import com.supinfo.supfitness.ejb.facade.RaceFacade;
 import com.supinfo.supfitness.web.util.ConverterUtil;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,11 +25,14 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Antonin
  */
+@WebServlet(name = "ListRacesServlet", urlPatterns = {"/ListRaces"})
 public class ListRacesServlet extends HttpServlet {
 
 
     @EJB
     private RaceBusiness raceBusiness;
+    @EJB
+    private UserBusiness userBusiness;
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -41,7 +47,8 @@ public class ListRacesServlet extends HttpServlet {
             throws ServletException, IOException {
         
        Long id = ConverterUtil.ConvertRequestParameterToLong(request.getAttribute("userId"));
-       List<RaceEntity> listRaces = raceBusiness.findAllByUserId(id);
+       UserEntity user = userBusiness.find(id);
+       List<RaceEntity> listRaces = raceBusiness.findAllByUser(user);
        request.setAttribute("listRaces", listRaces);
        request.getRequestDispatcher("jsp/listRaces.jsp").forward(request, response);
     }
