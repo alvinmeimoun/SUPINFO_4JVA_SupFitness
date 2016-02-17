@@ -6,9 +6,9 @@
 package com.supinfo.supfitness.web.api.servlet;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.supinfo.supfitness.ejb.business.TrackBusiness;
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
-import com.supinfo.supfitness.ejb.facade.TrackFacade;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -31,7 +31,11 @@ public class ListTrackRestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<TrackEntity> entities = trackBusiness.findAllTrack(
                 req.getParameter("raceId") == null ? null : Long.parseLong(req.getParameter("raceId")));
-        String jsonString = new Gson().toJson(entities);
+        
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .create();
+        String jsonString = gson.toJson(entities);
         
         resp.addHeader("Content-Type", "application.json");
         

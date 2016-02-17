@@ -5,8 +5,10 @@
  */
 package com.supinfo.supfitness.ejb.entity;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,24 +31,12 @@ public class TrackEntity implements Serializable{
     
     private static long serialVersionUID = 1L;
 
-    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
     
-    @NotNull
-    private Long longitude;
-    
-    @NotNull
-    private Long latitude;
-    
-    @NotNull
-    private Long speed;
-    
-    @NotNull
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
-    
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="race_id")
+    @Expose private Long id;
+    @Expose private Double longitude;
+    @Expose private Double latitude;
+    @Expose private Double speed;
+    @Expose private Date startDate;
     private RaceEntity race;
 
     
@@ -66,6 +56,7 @@ public class TrackEntity implements Serializable{
     /**
      * @return the id
      */
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -81,14 +72,16 @@ public class TrackEntity implements Serializable{
     /**
      * @return the longitude
      */
-    public Long getLongitude() {
+    @NotNull
+    @Column(name = "LONGITUDE", nullable = false)
+    public Double getLongitude() {
         return longitude;
     }
 
     /**
      * @param longitude the longitude to set
      */
-    public TrackEntity setLongitude(Long longitude) {
+    public TrackEntity setLongitude(Double longitude) {
         this.longitude = longitude;
         return this;
     }
@@ -96,14 +89,16 @@ public class TrackEntity implements Serializable{
     /**
      * @return the latitude
      */
-    public Long getLatitude() {
+    @NotNull
+    @Column(name = "LATITUDE", nullable = false)
+    public Double getLatitude() {
         return latitude;
     }
 
     /**
      * @param latitude the latitude to set
      */
-    public TrackEntity setLatitude(Long latitude) {
+    public TrackEntity setLatitude(Double latitude) {
         this.latitude = latitude;
         return this;
     }
@@ -111,14 +106,16 @@ public class TrackEntity implements Serializable{
     /**
      * @return the speed
      */
-    public Long getSpeed() {
+    @NotNull
+    @Column(name = "SPEED", nullable = false)
+    public Double getSpeed() {
         return speed;
     }
 
     /**
      * @param speed the speed to set
      */
-    public TrackEntity setSpeed(Long speed) {
+    public TrackEntity setSpeed(Double speed) {
         this.speed = speed;
         return this;
     }
@@ -126,6 +123,9 @@ public class TrackEntity implements Serializable{
     /**
      * @return the startDate
      */
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    @Column(name = "STARTDATE", nullable = false)
     public Date getStartDate() {
         return startDate;
     }
@@ -141,6 +141,8 @@ public class TrackEntity implements Serializable{
     /**
      * @return the race
      */
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="race_id")
     public RaceEntity getRace() {
         return race;
     }

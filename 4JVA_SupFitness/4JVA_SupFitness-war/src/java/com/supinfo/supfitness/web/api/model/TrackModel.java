@@ -10,9 +10,9 @@ import java.util.Date;
 public class TrackModel {
   
     private Long raceId;
-    private Long longitude;
-    private Long latitude;
-    private Long speed;
+    private Double longitude;
+    private Double latitude;
+    private Double speed;
     private Date startDate;
 
     public Long getRaceId() {
@@ -23,27 +23,27 @@ public class TrackModel {
         this.raceId = raceId;
     }
 
-    public Long getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Long longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    public Long getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Long latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public Long getSpeed() {
+    public Double getSpeed() {
         return speed;
     }
 
-    public void setSpeed(Long speed) {
+    public void setSpeed(Double speed) {
         this.speed = speed;
     }
 
