@@ -35,7 +35,7 @@
                         <%= dateFormatMain.format(raceModel.getStartDate()) %>
                     </p></br>
                     </br>
-                    <a href="#">Ajouter une track</a>
+                    <a href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
                     <table id="table_tracks" class="table table-striped table-bordered">
                         <thead>
                             <tr>
