@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <welcome-file-list>
-        <welcome-file>home</welcome-file>
-    </welcome-file-list>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.supinfo.supfitness.web.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListRacesServlet</servlet-name>
+        <servlet-class>com.supinfo.supfitness.web.servlet.ListRacesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
@@ -43,20 +49,41 @@
         <servlet-name>EditProfileServlet</servlet-name>
         <url-pattern>/editProfile</url-pattern>
     </servlet-mapping>
+<servlet-mapping>
+        <servlet-name>ListRacesServlet</servlet-name>
+        <url-pattern>/ListRaces</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <!-- Rest API -->
     <servlet>
         <servlet-name>ListTrackRestServlet</servlet-name>
-        <servlet-class>com.supinfo.supfitness.web.servlet.api.ListTrackRestServlet</servlet-class>
+        <servlet-class>com.supinfo.supfitness.web.api.servlet.ListTrackRestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ListTrackRestServlet</servlet-name>
         <url-pattern>/api/listTrack</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AddTrackRestServlet</servlet-name>
+        <servlet-class>com.supinfo.supfitness.web.api.servlet.AddTrackRestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTrackRestServlet</servlet-name>
+        <url-pattern>/api/addTrack</url-pattern>
+    </servlet-mapping>
     <!-- Filters -->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
     <filter>
         <filter-name>AuthManagerFilter</filter-name>
         <filter-class>com.supinfo.supfitness.web.filter.AuthManagerFilter</filter-class>
@@ -69,7 +96,7 @@
         <filter-name>RestAuthManagerFilter</filter-name>
         <filter-class>com.supinfo.supfitness.web.filter.RestAuthManagerFilter</filter-class>
     </filter>
-        <filter-mapping>
+    <filter-mapping>
         <filter-name>RestAuthManagerFilter</filter-name>
         <url-pattern>/api/*</url-pattern>
     </filter-mapping>
@@ -81,4 +108,8 @@
         <filter-name>AuthManagerFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
 </web-app>

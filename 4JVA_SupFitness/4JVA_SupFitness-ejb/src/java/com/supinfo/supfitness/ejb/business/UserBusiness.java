@@ -31,8 +31,6 @@ public class UserBusiness {
                 isNew = true;
             }
         }
-        
-        
         if(isNew){
             userFacade.create(userObject);
         } else {
@@ -44,4 +42,10 @@ public class UserBusiness {
         return userFacade.findByUsername(username);
     }
     
+
+ public UserEntity find(Long id) {
+         
+         return userFacade.find(id);
+     }
+
 }
