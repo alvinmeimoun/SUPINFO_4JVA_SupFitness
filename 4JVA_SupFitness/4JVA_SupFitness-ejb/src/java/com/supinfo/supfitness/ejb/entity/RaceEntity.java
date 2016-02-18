@@ -104,7 +104,7 @@ public class RaceEntity implements Serializable {
     }
 
     @NotNull
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "STARTDATE", nullable = false)
     public Date getStartDate() {
         return startDate;

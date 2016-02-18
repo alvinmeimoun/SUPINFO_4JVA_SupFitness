@@ -7,7 +7,9 @@ package com.supinfo.supfitness.web.servlet;
 
 import com.supinfo.supfitness.ejb.business.RaceBusiness;
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
+import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +32,7 @@ public class DetailsRaceServlet extends HttpServlet {
         RaceEntity race = raceBusiness.findOne(Long.parseLong(raceIdStr));
         
         req.setAttribute("raceDetails", race);
+        req.setAttribute("tracksCount", race.getTracks().size()); //Force load a lazy collection
         
         req.getRequestDispatcher("jsp/raceDetails.jsp").forward(req, resp);
     }
