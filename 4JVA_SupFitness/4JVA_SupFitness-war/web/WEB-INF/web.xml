@@ -9,18 +9,6 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>com.supinfo.supfitness.web.servlet.LogoutServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>AddTrackServlet</servlet-name>
-        <servlet-class>com.supinfo.supfitness.web.servlet.AddTrackServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ListTracksServlet</servlet-name>
-        <servlet-class>com.supinfo.supfitness.web.servlet.ListTracksServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteTrackServlet</servlet-name>
-        <servlet-class>com.supinfo.supfitness.web.servlet.DeleteTrackServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -79,6 +67,33 @@
         <servlet-name>EditProfileServlet</servlet-name>
         <url-pattern>/editProfile</url-pattern>
     </servlet-mapping>
+    <!-- List Track -->
+    <servlet>
+        <servlet-name>ListTracksServlet</servlet-name>
+        <servlet-class>com.supinfo.supfitness.web.servlet.ListTracksServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListTracksServlet</servlet-name>
+        <url-pattern>/ListTracks</url-pattern>
+    </servlet-mapping>
+    <!-- DeleteTrackServlet -->
+    <servlet>
+        <servlet-name>DeleteTrackServlet</servlet-name>
+        <servlet-class>com.supinfo.supfitness.web.servlet.DeleteTrackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteTrackServlet</servlet-name>
+        <url-pattern>/DeleteTrack</url-pattern>
+    </servlet-mapping>
+    <!-- Add Track -->
+    <servlet>
+        <servlet-name>AddTrackServlet</servlet-name>
+        <servlet-class>com.supinfo.supfitness.web.servlet.AddTrackServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddTrackServlet</servlet-name>
+        <url-pattern>/AddTrack</url-pattern>
+    </servlet-mapping>
     <!-- Faces -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -120,7 +135,9 @@
         <filter-name>ProtectorFilter</filter-name>
         <servlet-name>ListRacesServlet</servlet-name>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-name>DetailsRaceServlet</servlet-name>
+        <servlet-name>AddTrackServlet</servlet-name>
+        <servlet-name>DeleteTrackServlet</servlet-name>
+        <servlet-name>ListTracksServlet</servlet-name>
     </filter-mapping>
     <!-- AuthManager Filter -->
     <filter>
@@ -141,18 +158,6 @@
         <url-pattern>/api/*</url-pattern>
     </filter-mapping>
     <!-- Config -->
-    <servlet-mapping>
-        <servlet-name>AddTrackServlet</servlet-name>
-        <url-pattern>/AddTrack</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ListTracksServlet</servlet-name>
-        <url-pattern>/ListTracks</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteTrackServlet</servlet-name>
-        <url-pattern>/DeleteTrack</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

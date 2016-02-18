@@ -35,7 +35,10 @@
                         <%= dateFormatMain.format(raceModel.getStartDate()) %>
                     </p></br>
                     </br>
-                    <a href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+                    <% if(request.getAttribute("isAuthenticated") != null
+                            && ((String) request.getAttribute("isAuthenticated")).equals("true")) {%>
+                        <a href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+                    <% } %>
                     <table id="table_tracks" class="table table-striped table-bordered">
                         <thead>
                             <tr>
