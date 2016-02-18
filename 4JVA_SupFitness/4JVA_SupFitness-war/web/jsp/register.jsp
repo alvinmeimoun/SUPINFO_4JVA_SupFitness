@@ -9,16 +9,16 @@
                 <div class="account-wall">
         <form action="register" method="POST" class="form-signin">
             <div>
-                <label for="username">Username</label>
+                <label for="username">Nom d'utilisateur</label>
                 <input type="text" id="username" name="username" class="form-control" placeholder="Nom d'utilisateur"/>
             </div>
             <div>
-                <label for="firstname">Firstname</label>
-                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Nom"/>
+                <label for="firstname">Prénom</label>
+                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Prénom"/>
             </div>
             <div>
-                <label for="lastname">Lastname</label>
-                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Prénom"/>
+                <label for="lastname">Nom de famille</label>
+                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Nom de famille"/>
             </div>
             
             <div>
@@ -27,7 +27,12 @@
             </div>
             
             <div>
-                <label for="password">Password</label>
+                <label for="postalcode">Code postal</label>
+                <input type="text" id="postalcode" name="postalcode" class="form-control" placeholder="Code postal" />
+            </div>
+            
+            <div>
+                <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-control" />
             </div>
             

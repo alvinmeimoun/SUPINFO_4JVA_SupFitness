@@ -16,4 +16,5 @@ public class UserEntity_ {
         public static volatile SingularAttribute<UserEntity_, String> email;
         public static volatile SingularAttribute<UserEntity_, String> username;
         public static volatile SingularAttribute<UserEntity_, String> password;
+        public static volatile SingularAttribute<UserEntity_, String> postalcode;
 }
