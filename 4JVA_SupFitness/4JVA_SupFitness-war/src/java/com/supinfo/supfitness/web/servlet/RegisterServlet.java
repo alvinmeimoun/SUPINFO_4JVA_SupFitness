@@ -57,6 +57,7 @@ public class RegisterServlet extends HttpServlet {
         user.setPassword(DigestUtils.sha256Hex(
                 request.getParameter("password")));
         user.setUserName(request.getParameter("username"));
+        user.setPostalCode(request.getParameter("postalcode"));
         
         userBusiness.addOrUpdateUser(user);
         

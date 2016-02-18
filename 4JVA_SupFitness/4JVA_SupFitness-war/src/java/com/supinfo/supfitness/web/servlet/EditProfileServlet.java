@@ -62,10 +62,11 @@ public class EditProfileServlet extends HttpServlet {
         String cookieUsername = (String) request.getAttribute("username");
         UserEntity user = userBusiness.findByUsername(cookieUsername);
         
-        user.setUserName(request.getParameter("username"));
+        //user.setUserName(request.getParameter("username"));
         user.setEmail(request.getParameter("email"));
         user.setFirstName(request.getParameter("firstname"));
         user.setLastName(request.getParameter("lastname"));
+        user.setPostalCode(request.getParameter("postalcode"));
         
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
@@ -83,6 +84,9 @@ public class EditProfileServlet extends HttpServlet {
                     //Confirmation du nouveua mot de passe valide
                     user.setPassword(DigestUtils.sha256Hex(newPassword));
                 }
+            }
+            else{
+                System.out.println("Bad Old Password");
             }
         }
         

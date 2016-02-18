@@ -11,20 +11,25 @@
         <form action="editProfile" method="POST" class="form-signin">
             <div>
                 <label for="username">Nom d'utilisateur</label>
-                <input type="text" id="username" name="username" value="<c:out value="${user.userName}"> </c:out>" class="form-control" placeholder="Nom d'utilisateur"/>
+                <input type="text" id="username" name="username" value="<c:out value="${user.userName}"> </c:out>" class="form-control" placeholder="Nom d'utilisateur" disabled/>
             </div>
             <div>
                 <label for="firstname">Prénom</label>
-                <input type="text" id="firstname" name="firstname" value="<c:out value="${user.firstName}"> </c:out>" class="form-control" placeholder="Nom"/>
+                <input type="text" id="firstname" name="firstname" value="<c:out value="${user.firstName}"> </c:out>" class="form-control" placeholder="Prénom"/>
             </div>
             <div>
                 <label for="lastname">Nom de famille</label>
-                <input type="text" id="lastname" name="lastname" value="<c:out value="${user.lastName}"> </c:out>" class="form-control" placeholder="Prénom"/>
+                <input type="text" id="lastname" name="lastname" value="<c:out value="${user.lastName}"> </c:out>" class="form-control" placeholder="Nom de famille"/>
             </div>
             
             <div>
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" value="<c:out value="${user.email}"> </c:out>" class="form-control" placeholder="Email" />
+            </div>
+            
+            <div>
+                <label for="postalcode">Code postal</label>
+                <input type="text" id="postalcode" name="postalcode" value="<c:out value="${user.postalCode}"> </c:out>" class="form-control" placeholder="Code postal" />
             </div>
             
             <div>
