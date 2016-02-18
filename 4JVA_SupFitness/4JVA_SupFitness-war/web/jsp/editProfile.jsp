@@ -3,10 +3,12 @@
 <header>
             <jsp:include page="../include/header.jsp" />
 </header>
+<div class="row bs-docs-header" style="height:100px;">
+    <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Modifier votre profil</h2></p></br>
+</div>
   <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
-                <h1 class="text-center login-title">Modification de votre profil</h1>
                 <div class="account-wall">
         <form action="editProfile" method="POST" class="form-signin">
             <div>

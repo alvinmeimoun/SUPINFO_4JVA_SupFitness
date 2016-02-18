@@ -4,10 +4,11 @@
 <header>
     <jsp:include page="../include/header.jsp" />
 </header>
+<div class="row bs-docs-header" style="height:100px;">
+    <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Mes tracks</h2></p></br>
+</div>
 <div class="container">
-<p >
-<a class="btn btn-primary" href="AddTrack?raceId=<c:out value="${raceId}" />">Ajouter une track</a>
-</p>
+
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -32,7 +33,10 @@
                 </tr>
             </c:forEach>
     </tbody>
-</table>   
+</table>
+<p style="text-align:right;" >
+<a class="btn btn-info" href="AddTrack?raceId=<c:out value="${raceId}" />">Ajouter une track</a>
+</p>
 </div>
 <footer>
             <jsp:include page="../include/footer.jspf" />

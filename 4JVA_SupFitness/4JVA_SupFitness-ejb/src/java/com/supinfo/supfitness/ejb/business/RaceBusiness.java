@@ -30,7 +30,9 @@ public class RaceBusiness {
     public RaceEntity findOne(Long raceId){
         return raceFacade.find(raceId);
     }
-
+    public List<RaceEntity> findAll(){
+        return raceFacade.findAll();
+    }
     public void addOrUpdateRace(RaceEntity raceObject){
         boolean isNew = false;
         if(raceObject.getId() == null || raceObject.getId() == 0){
@@ -52,7 +54,10 @@ public class RaceBusiness {
             raceFacade.edit(raceObject);
         }
     }
-    
+    public RaceEntity getLastRaceByUser(UserEntity user)
+    {
+       return raceFacade.getLastRaceByUser(user);
+    }
       public List<RaceEntity> findAllByUser(UserEntity user) {
           
           return raceFacade.findAllByUser(user);

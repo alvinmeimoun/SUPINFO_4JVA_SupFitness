@@ -2,6 +2,7 @@ package com.supinfo.supfitness.ejb.business;
 
 import com.supinfo.supfitness.ejb.entity.UserEntity;
 import com.supinfo.supfitness.ejb.facade.UserFacade;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -17,7 +18,9 @@ public class UserBusiness {
     public UserBusiness(){
         
     }
-    
+     public List<UserEntity> findAll(){
+        return userFacade.findAll();
+    }
     /**
      * Create or update a new user
      * @param userObject UserEntity

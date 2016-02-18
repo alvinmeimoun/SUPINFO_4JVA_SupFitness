@@ -42,6 +42,19 @@ public class RaceFacade {
     public RaceEntity find(Long id) {
         return em.find(RaceEntity.class, id);
     }
+   public RaceEntity getLastRaceByUser(UserEntity user)
+   {
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<RaceEntity> q = criteriaBuilder.createQuery(RaceEntity.class);
+        Root<RaceEntity> race = q.from(RaceEntity.class);
+        q.select(race);
+        
+        q.where(criteriaBuilder.equal(race.get(RaceEntity_.user),user));
+        q.orderBy(criteriaBuilder.desc(race.get(RaceEntity_.startDate)));
+        
+        return em.createQuery(q).setMaxResults(1).getSingleResult();
+       
+   }
     
    public List<RaceEntity> findAllByUser(UserEntity user) throws NoResultException{
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
@@ -80,5 +93,7 @@ public class RaceFacade {
         Query q = em.createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+    
+    
     
 }

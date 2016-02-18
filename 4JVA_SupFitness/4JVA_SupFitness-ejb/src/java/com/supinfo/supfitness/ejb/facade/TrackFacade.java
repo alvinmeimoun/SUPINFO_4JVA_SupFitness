@@ -8,7 +8,6 @@ package com.supinfo.supfitness.ejb.facade;
 import com.supinfo.supfitness.ejb.entity.RaceEntity_;
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.ejb.entity.TrackEntity_;
-import static com.supinfo.supfitness.ejb.entity.TrackEntity_.race;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -4,8 +4,10 @@
 <header>
     <jsp:include page="../include/header.jsp" />
 </header>
+<div class="row bs-docs-header" style="height:100px;">
+    <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Mes courses</h2></p></br>
+</div>
 <div class="container">
-<a href="AddRace">Ajouter une foot race</a>
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -26,6 +28,9 @@
             </c:forEach>
     </tbody>
 </table>   
+ <p style="text-align:right;">
+    <a class="btn btn-info" href="AddRace">Ajouter une race</a>
+</p>
 </div>
 <footer>
             <jsp:include page="../include/footer.jspf" />

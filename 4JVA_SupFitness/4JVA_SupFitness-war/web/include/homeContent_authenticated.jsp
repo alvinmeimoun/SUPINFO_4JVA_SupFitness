@@ -13,22 +13,19 @@
 
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfDi5eg8sWA5DumJtUKdqFA1ITz1wH8E&callback=initMap" type="text/javascript"></script>
-
-        <header>
-            <jsp:include page="../include/header.jsp" />
-        </header>
-        <div class="container">
-            <div class="row">
-                <p><h1 style="margin: 10px"><%= raceModel.getName() %></h1></p></br>
+            <div class="row bs-docs-header" style="height:100px;">
+                <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Ma dernière course : <%= raceModel.getName() %></h2></p></br>
             </div>
+        <div class="container">
+
             <div class="row">
                 <div class="col-md-5">
                     <p>
                         <% DateFormat dateFormatMain = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.getDefault()); %>
-                        <%= dateFormatMain.format(raceModel.getStartDate()) %>
+                        <strong>Date de la course: </strong><%= dateFormatMain.format(raceModel.getStartDate()) %>
                     </p></br>
                     </br>
-                    <a href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+              
                     <table id="table_tracks" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -49,15 +46,15 @@
                             <% } %>
                         </tbody>
                     </table>
+                    <p style="text-align:right;">
+                    <a class="btn btn-info" href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+                    </p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" style="height:400px;">
                     <div id="map"></div>
                 </div>
             </div>
         </div>
-        <footer>
-            <jsp:include page="../include/footer.jspf" />
-        </footer>
 
     
     <!-- Google Map API -->
@@ -67,7 +64,7 @@
             margin-bottom: 10px;
         }
     </style>
-    <script>
+    <script type="text/javascript">
         var points;
         var map;
         function initMap() {

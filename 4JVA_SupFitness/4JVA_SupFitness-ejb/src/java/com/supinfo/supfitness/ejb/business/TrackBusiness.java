@@ -5,6 +5,7 @@
  */
 package com.supinfo.supfitness.ejb.business;
 
+import com.supinfo.supfitness.ejb.entity.RaceEntity;
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.ejb.facade.TrackFacade;
 import java.util.List;
@@ -23,7 +24,9 @@ public class TrackBusiness  {
     public TrackBusiness(){
         
     }
-    
+    public List<TrackEntity> findAll(){
+        return trackFacade.findAll();
+    }
     /**
      * Create or update a new track
      * @param trackObject TrackEntity
