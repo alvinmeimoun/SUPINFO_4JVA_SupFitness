@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-5">
                     <p>
-                        <% DateFormat dateFormatMain = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale.getDefault()); %>
+                        <% DateFormat dateFormatMain = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.getDefault()); %>
                         <%= dateFormatMain.format(raceModel.getStartDate()) %>
                     </p></br>
                     <table id="table_tracks" class="table table-striped table-bordered">
