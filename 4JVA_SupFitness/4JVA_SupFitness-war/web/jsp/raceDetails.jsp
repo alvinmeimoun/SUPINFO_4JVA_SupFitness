@@ -34,6 +34,8 @@
                         <% DateFormat dateFormatMain = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.getDefault()); %>
                         <%= dateFormatMain.format(raceModel.getStartDate()) %>
                     </p></br>
+                    </br>
+                    <a href="#">Ajouter une track</a>
                     <table id="table_tracks" class="table table-striped table-bordered">
                         <thead>
                             <tr>
