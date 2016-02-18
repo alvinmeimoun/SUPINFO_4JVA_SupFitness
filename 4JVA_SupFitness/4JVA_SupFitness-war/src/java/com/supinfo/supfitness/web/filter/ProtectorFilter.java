@@ -17,23 +17,19 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class AuthManagerFilter  implements Filter {
+public class ProtectorFilter implements Filter {
 
-    public AuthManagerFilter() {
+    public ProtectorFilter() {
     }
 
     public void destroy() {
-        // TODO Auto-generated method stub
+        
     }
 
-    /**
-     * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
-     */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        // TODO Auto-generated method stub
-        // place your code here
         HttpServletRequest req = (HttpServletRequest) request;
         List<Cookie> cookies;
         if(req.getCookies() != null){
@@ -46,6 +42,7 @@ public class AuthManagerFilter  implements Filter {
         String username = "";
         String token = "";
         String id = "";
+        
         for(Cookie c : cookies){
             if("sb_username".equals(c.getName())){
                 username = c.getValue();
@@ -53,7 +50,7 @@ public class AuthManagerFilter  implements Filter {
             if("sb_token".equals(c.getName())){
                 token = c.getValue();
             }
-             if("sb_id".equals(c.getName())){
+            if("sb_id".equals(c.getName())){
                 id = c.getValue();
             }
         }
@@ -61,16 +58,14 @@ public class AuthManagerFilter  implements Filter {
         if(username != null && username.length() > 0 
                 && DigestUtils.sha256Hex(username).equals(token)){
             validCredentials = true;
-        } else {
-            username = "";
         }
         
         
-        ((HttpServletRequest)request).setAttribute("isAuthenticated", 
-                String.valueOf(validCredentials));
-        ((HttpServletRequest)request).setAttribute("username", username);
-        ((HttpServletRequest)request).setAttribute("userId", id);
-        chain.doFilter(request, response);
+        if (validCredentials) {
+            chain.doFilter(request, response);
+        } else {
+            ((HttpServletResponse)response).sendRedirect("home");
+        }
     }
 
     @Override
