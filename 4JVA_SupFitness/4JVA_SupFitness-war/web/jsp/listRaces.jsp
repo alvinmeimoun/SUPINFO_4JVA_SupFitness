@@ -19,7 +19,7 @@
             <c:forEach items="${listRaces}" var="race">
                 <tr>
                     <td><c:out value="${race.getId()}" /></td>
-                    <td><c:out value="${race.getName()}" /></td>
+                    <td><a href="detailsRace?raceId=${race.getId()}"><c:out value="${race.getName()}" /></a></td>
                     <td><c:out value="${race.getStartDate()}" /></td>
                     <td><a href="#">Ajouter une track</a></td>
                 </tr>
