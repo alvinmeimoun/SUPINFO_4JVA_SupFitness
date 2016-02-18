@@ -14,12 +14,35 @@
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfDi5eg8sWA5DumJtUKdqFA1ITz1wH8E&callback=initMap" type="text/javascript"></script>
 
+
+
+        <!-- Facebook SDK -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.5&appId=1703651573245872";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <% 
+            String currentUrl = request.getRequestURL().toString();
+            String baseURL = currentUrl.substring(0, currentUrl.length() - request.getRequestURI().length()) + request.getContextPath() + "/";
+        %>
+        
         <header>
             <jsp:include page="../include/header.jsp" />
         </header>
         <div class="container">
             <div class="row">
-                <p><h1 style="margin: 10px"><%= raceModel.getName() %></h1></p></br>
+                <div class="col-md-5">
+                    <p><h1 style="margin: 10px"><%= raceModel.getName() %></h1></p></br>
+                </div>
+                <div class="col-md-6">
+                    <% String fbShareUrl = "http://www.supinfo.com/supfitness/detailsRace?raceId=" + raceModel.getId(); %>
+                    <div class="fb-share-button right" data-href='<%= fbShareUrl %>'  data-layout="button"
+                        style="margin-top: 10px;"></div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-5">
@@ -28,7 +51,10 @@
                         <%= dateFormatMain.format(raceModel.getStartDate()) %>
                     </p></br>
                     </br>
-                    <a href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+                    <% if(request.getAttribute("isAuthenticated") != null
+                            && ((String) request.getAttribute("isAuthenticated")).equals("true")) {%>
+                        <a href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+                    <% } %>
                     <table id="table_tracks" class="table table-striped table-bordered">
                         <thead>
                             <tr>
@@ -118,3 +144,15 @@
             <% } %>
         }
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfDi5eg8sWA5DumJtUKdqFA1ITz1wH8E&callback=initMap" type="text/javascript"></script>
+    
+    <!-- Facebook -->
+    <script>
+    function facebook_share(link){
+        var left = (screen.width/2)-(520/2);
+        var top = (screen.height/2)-(430/2);
+        window.open("https://www.facebook.com/sharer/sharer.php?u=="+link, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top="+top+", left="+left+", width=520, height=430");
+    }
+    </script>
+    
+</html>
