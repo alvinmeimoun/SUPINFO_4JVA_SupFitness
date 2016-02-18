@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="css/libs/bootstrap.min.css" type="text/css"/>
         <link rel="stylesheet" href="css/libs/bootstrap-theme.min.css" type="text/css"/>
         <link rel="stylesheet" href="css/login.css" type="text/css"/>
+        <script src="js/libs/jquery-2.2.0.min.js"></script>
         <script src="js/libs/bootstrap.min.js"></script>
 </head>
 <body>
