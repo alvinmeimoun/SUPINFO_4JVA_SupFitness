@@ -5,6 +5,7 @@ import com.supinfo.supfitness.ejb.facade.UserFacade;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 
 @Stateless
 @LocalBean
@@ -37,9 +38,14 @@ public class UserBusiness {
         }
     }
     
-     public UserEntity find(Long id) {
+    public UserEntity findByUsername(String username) throws NoResultException{
+        return userFacade.findByUsername(username);
+    }
+    
+
+ public UserEntity find(Long id) {
          
          return userFacade.find(id);
      }
-    
+
 }

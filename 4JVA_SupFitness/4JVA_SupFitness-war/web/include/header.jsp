@@ -37,7 +37,7 @@
       </ul>
        
         <ul class="nav navbar-nav navbar-right">
-            <li><a>Bonjour <%= request.getAttribute("username") %> ! </a></li>
+            <li><a href="editProfile"> Bonjour <%= request.getAttribute("username") %> ! </a></li>
           <li><a href="logout">Se déconnecter</a></li>
 
         </ul>

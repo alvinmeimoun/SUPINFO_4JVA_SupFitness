@@ -20,3 +20,7 @@ hs_err_pid*
 /4JVA_SupFitness/nbproject/private/
 /4JVA_SupFitness/4JVA_SupFitness-war/nbproject/private/
 /4JVA_SupFitness/4JVA_SupFitness-ejb/nbproject/private/
+
+#Git Merge Temporary Files
+*.orig
+*.remote

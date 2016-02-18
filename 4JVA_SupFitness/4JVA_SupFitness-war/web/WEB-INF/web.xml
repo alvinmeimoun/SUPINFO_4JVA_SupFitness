@@ -58,6 +58,15 @@
         <servlet-name>DetailsRaceServlet</servlet-name>
         <url-pattern>/detailsRace</url-pattern>
     </servlet-mapping>
+    <!-- Edit Profile -->
+    <servlet>
+        <servlet-name>EditProfileServlet</servlet-name>
+        <servlet-class>com.supinfo.supfitness.web.servlet.EditProfileServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditProfileServlet</servlet-name>
+        <url-pattern>/editProfile</url-pattern>
+    </servlet-mapping>
     <!-- Faces -->
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
