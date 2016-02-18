@@ -25,13 +25,33 @@
                 <p><h1><%= raceModel.getName() %></h1></p></br>
             </div>
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <p>
-                        <% String dateFormatted = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale.getDefault()).format(raceModel.getStartDate()); %>
-                        <%= dateFormatted %>
+                        <% DateFormat dateFormatMain = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale.getDefault()); %>
+                        <%= dateFormatMain.format(raceModel.getStartDate()) %>
                     </p></br>
+                    <table id="table_tracks" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Vitesse</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(TrackEntity trackModel : raceModel.getTracks()) { %>
+                                <tr>
+                                    <td><%= dateFormatMain.format(trackModel.getStartDate()) %></td>
+                                    <td><%= trackModel.getSpeed() %></td>
+                                    <td><%= trackModel.getLatitude() %></td>
+                                    <td><%= trackModel.getLongitude() %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
                     google maps
                 </div>
             </div>
