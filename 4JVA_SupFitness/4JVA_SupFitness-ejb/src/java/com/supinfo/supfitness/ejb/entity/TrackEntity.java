@@ -124,7 +124,7 @@ public class TrackEntity implements Serializable{
      * @return the startDate
      */
     @NotNull
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "STARTDATE", nullable = false)
     public Date getStartDate() {
         return startDate;
