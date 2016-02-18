@@ -3,6 +3,7 @@
   <persistence-unit name="4JVA_SupFitness-ejbPU" transaction-type="JTA">
     <jta-data-source>jdbc/supfitness</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create-or-extend-tables"/>
     </properties>
