@@ -21,7 +21,7 @@
                     <td><c:out value="${race.getId()}" /></td>
                     <td><c:out value="${race.getName()}" /></td>
                     <td><c:out value="${race.getStartDate()}" /></td>
-                    <td><a href="#">Ajouter une track</a></td>
+                    <td><a href="AddTrack?raceId=<c:out value="${race.getId()}" />">Ajouter une track</a> | <a href="ListTracks?raceId=<c:out value="${race.getId()}" />">Mes tracks</a></td>
                 </tr>
             </c:forEach>
     </tbody>

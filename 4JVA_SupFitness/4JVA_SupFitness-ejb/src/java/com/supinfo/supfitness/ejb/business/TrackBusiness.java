@@ -51,4 +51,21 @@ public class TrackBusiness  {
             return trackFacade.findByRaceId(raceId);
         }
     }
+    
+    public TrackEntity find(Long trackId)
+    {
+        return trackFacade.find(trackId);
+    }
+    public boolean deleteTrack(TrackEntity track){
+       
+          try 
+          {
+          trackFacade.remove(track);
+          return true;
+          }
+          catch(Exception e)
+          {
+              return false;
+          }
+    }
 }

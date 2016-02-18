@@ -10,7 +10,7 @@
         <form action="AddTrack" method="POST">
             <div>
                 <input type="hidden" name="userId" value="${requestScope.userId}"/>
-                <input type="hidden" name="userId" value="${requestScope.raceId}"/>
+                <input type="hidden" name="raceId" value="${requestScope.raceId}"/>
                 <label for="latitude">Latitude</label>
                 <input type="text" id="latitude" name="latitude" class="form-control" placeholder="Latitude"/>
             </div>
@@ -23,8 +23,8 @@
                 <input type="text" id="speed" name="speed" class="form-control" placeholder="Speed"/>
             </div>
             <div>
-                <label for="date">Date</label>
-                <input type="date" id="startDate" name="startDate" class="form-control" />
+                <label for="startDate">Date</label>
+                <input type="datetime-local" id="startDate" name="startDate" class="form-control" />
             </div>
             <div>
                 <button type="submit" class="btn btn-success"  >Enregistrer</button>
