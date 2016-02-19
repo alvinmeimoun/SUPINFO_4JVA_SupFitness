@@ -68,7 +68,7 @@
                     </table>
                         <% if(request.getAttribute("isAuthenticated") != null
                             && ((String) request.getAttribute("isAuthenticated")).equals("true")) {%>
-                        <a class="btn btn-info" href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+                        <a class="btn btn-info" href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter un checkpoint</a>
                     <% } %>
                     <br>
                 </div>

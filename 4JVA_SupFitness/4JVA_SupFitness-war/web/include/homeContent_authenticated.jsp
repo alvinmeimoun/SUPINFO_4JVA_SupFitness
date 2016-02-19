@@ -47,7 +47,7 @@
                         </tbody>
                     </table>
                     <p style="text-align:right;">
-                    <a class="btn btn-info" href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter une track</a>
+                    <a class="btn btn-info" href="AddTrack?raceId=<%= raceModel.getId() %>">Ajouter un checkpoint</a>
                     </p>
                 </div>
                 <div class="col-md-6" style="height:400px;">

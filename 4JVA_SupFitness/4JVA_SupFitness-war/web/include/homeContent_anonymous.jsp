@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-3 div-home" style="margin-left:7.5%">
                 <div style="height:55px;">
-                <h2 class="login-title" style="font-size: 25px;">Nombre de races actuelles</h2>
+                <h2 class="login-title" style="font-size: 25px;">Nombre de courses actuelles</h2>
                 </div>
                 <div class="circle">
                     <div class="inner-circle">
@@ -23,7 +23,7 @@
             </div>
               <div class="col-md-3 div-home-green" style="margin-left:5%">
                 <div style="height:55px;">
-                <h2 class="login-title" style="font-size: 25px;">Nombre de tracks actuelles</h2>
+                <h2 class="login-title" style="font-size: 25px;">Nombre de checkpoints actuels</h2>
                 </div>
                 <div class="circle-green">
                     <div class="inner-circle">

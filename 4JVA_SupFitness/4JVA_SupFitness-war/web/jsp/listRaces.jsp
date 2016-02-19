@@ -11,7 +11,7 @@
 <table class="table table-bordered table-hover">
     <thead>
         <tr>
-            <td><strong>Id</strong></td>
+            <td><strong>ID</strong></td>
             <td><strong>Nom</strong></td>
             <td><strong>Date</strong></td>
             <td><strong>Action</strong></td>
@@ -23,13 +23,13 @@
                     <td><c:out value="${race.getId()}" /></td>
                     <td><a href="detailsRace?raceId=${race.getId()}"><c:out value="${race.getName()}" /></a></td>
                     <td><c:out value="${race.getStartDate()}" /></td>
-                    <td><a href="AddTrack?raceId=<c:out value="${race.getId()}" />">Ajouter une track</a> | <a href="ListTracks?raceId=<c:out value="${race.getId()}" />">Mes tracks</a></td>
+                    <td><a href="AddTrack?raceId=<c:out value="${race.getId()}" />">Ajouter un checkpoint</a> | <a href="ListTracks?raceId=<c:out value="${race.getId()}" />">Mes tracks</a></td>
                 </tr>
             </c:forEach>
     </tbody>
 </table>   
  <p style="text-align:right;">
-    <a class="btn btn-info" href="AddRace">Ajouter une race</a>
+    <a class="btn btn-info" href="AddRace">Ajouter une course</a>
 </p>
 </div>
 <footer>

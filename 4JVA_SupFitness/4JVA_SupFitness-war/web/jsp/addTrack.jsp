@@ -3,7 +3,7 @@
     <jsp:include page="../include/header.jsp" />
 </header>
 <div class="row bs-docs-header" style="height:100px;">
-    <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Ajouter une track</h2></p></br>
+    <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Ajouter un checkpoint</h2></p></br>
 </div>
  <div class="container">
         <div class="row">
