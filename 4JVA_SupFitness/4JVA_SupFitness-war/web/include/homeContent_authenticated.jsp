@@ -12,7 +12,6 @@
 %>
 
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfDi5eg8sWA5DumJtUKdqFA1ITz1wH8E&callback=initMap" type="text/javascript"></script>
             <div class="row bs-docs-header" style="height:100px;">
                 <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Ma dernière course : <%= raceModel.getName() %></h2></p></br>
             </div>
@@ -115,3 +114,5 @@
             <% } %>
         }
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfDi5eg8sWA5DumJtUKdqFA1ITz1wH8E&callback=initMap" type="text/javascript"></script>
+        
