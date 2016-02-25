@@ -51,18 +51,55 @@ public class RegisterServlet extends HttpServlet {
         //Creation de l'entité
         UserEntity user = new UserEntity();
         
-        user.setEmail(request.getParameter("email"));
-        user.setFirstName(request.getParameter("firstname"));
-        user.setLastName(request.getParameter("lastname"));
-        user.setPassword(DigestUtils.sha256Hex(
-                request.getParameter("password")));
-        user.setUserName(request.getParameter("username"));
-        user.setPostalCode(request.getParameter("postalcode"));
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String firstname = request.getParameter("firstname");
+        String lastname = request.getParameter("lastname");
+        String postalCode = request.getParameter("postalcode");
+        String password = request.getParameter("password");
         
-        userBusiness.addOrUpdateUser(user);
+        user.setEmail(email);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
+        user.setPassword(DigestUtils.sha256Hex(
+                password));
+        user.setUserName(username);
+        user.setPostalCode(postalCode);
+        
+        /*userBusiness.addOrUpdateUser(user);
         
         RequestDispatcher rd = request.getRequestDispatcher("login");
         rd.forward(request, response);
+        */
+        
+        
+        
+        if(userBusiness.findByUsername(username) != null){
+            System.out.println("Existant");
+            
+            request.setAttribute("error", "Nom d'utilisateur déjà existant");
+            response.sendRedirect("register");
+            
+        }
+        //Username n'est pas dans la BDD
+        else{
+            
+                if(username.length() > 0 && email.length() > 0 && firstname.length() > 0 && lastname.length() > 0 
+                    && postalCode.length() == 5 && password != null  ){
+
+                     userBusiness.addOrUpdateUser(user);
+                     RequestDispatcher rd = request.getRequestDispatcher("login");
+                     rd.forward(request, response);
+
+                }
+
+            else{
+                System.out.println("Erreur sur les champs");
+                response.sendRedirect("register");
+            }
+        }
+       
+        
     }
 
     /**
