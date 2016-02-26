@@ -138,6 +138,7 @@
         <servlet-name>AddTrackServlet</servlet-name>
         <servlet-name>DeleteTrackServlet</servlet-name>
         <servlet-name>ListTracksServlet</servlet-name>
+        <servlet-name>AddRaceServlet</servlet-name>
     </filter-mapping>
     <!-- AuthManager Filter -->
     <filter>
