@@ -20,6 +20,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet permettant d'ajouter un Track via l'API REST
+ * Les service REST communiquent en JSON
+ */
 public class AddTrackRestServlet extends HttpServlet {
 
     @EJB
@@ -28,6 +32,9 @@ public class AddTrackRestServlet extends HttpServlet {
     @EJB
     RaceBusiness raceBusiness;
     
+    /**
+     * Ajoute un nouveau Track
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuilder jb = new StringBuilder();

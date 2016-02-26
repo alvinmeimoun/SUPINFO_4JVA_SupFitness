@@ -22,6 +22,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * Sécurise les Servlets auquels il est appliqué
+ * La vérification de sécurité se fait par Headers
+ * Destiné à être utilisé sur les API REST sécurisés
+ */
 public class RestProtectorFilter implements Filter {
 
     @EJB

@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet composante de l'API REST permettant de récupérer la liste des track
+ * @author alvin
+ */
 public class ListTrackRestServlet extends HttpServlet {
 
     @EJB
@@ -27,6 +31,13 @@ public class ListTrackRestServlet extends HttpServlet {
         super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Récupère la liste des Track
+     * API REST
+     * L'API REST commuique en JSON
+     * 
+     * Prends en paramètre raceId pour obtenir la liste des Tracks d'un Race
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<TrackEntity> entities = trackBusiness.findAllTrack(

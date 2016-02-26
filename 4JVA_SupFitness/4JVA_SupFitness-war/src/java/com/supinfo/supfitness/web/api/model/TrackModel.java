@@ -7,6 +7,9 @@ package com.supinfo.supfitness.web.api.model;
 
 import java.util.Date;
 
+/**
+ * Classe modèle représentant un Track utilisé dans la REST API
+ */
 public class TrackModel {
   
     private Long raceId;

@@ -19,6 +19,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * Filtre éxécuté à chaque requêtes permettant d'ajouter les attributs : 
+ * - isAuthenticated : Le client estauthentifié ou non
+ * - username : Nom d'utilisateur si authentifié
+ * - userId : ID de l'utilisateur si authentifié
+ */
 public class AuthStatusFilter  implements Filter {
 
     public AuthStatusFilter() {

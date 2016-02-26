@@ -20,6 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * Sécurise les Servlets auquels il est appliqué
+ * La vérification de sécurité se fait par Cookies
+ */
 public class ProtectorFilter implements Filter {
 
     public ProtectorFilter() {
