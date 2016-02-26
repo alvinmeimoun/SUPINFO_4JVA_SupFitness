@@ -5,25 +5,18 @@
  */
 package com.supinfo.supfitness.web.servlet;
 
-import static com.sun.org.apache.xml.internal.serializer.utils.Utils.messages;
 import com.supinfo.supfitness.ejb.business.UserBusiness;
 import com.supinfo.supfitness.ejb.entity.UserEntity;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
 /**
- *
- * @author Naruara
+ * Servmet ayant pour fonctionnalité d'éfiter un profil utilisateur
  */
 //@WebServlet(name = "EditProfileServlet", urlPatterns = {"/editProfile"})
 public class EditProfileServlet extends HttpServlet {
@@ -32,12 +25,8 @@ public class EditProfileServlet extends HttpServlet {
     UserBusiness userBusiness;
     
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Récupère la page d'édition d'un profil utilisateur
+     * Le nom d'utilisateur est obtenu depuis les Cookies d'authentification
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -52,12 +41,8 @@ public class EditProfileServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Sauvegarde le formulaire d'édition d'un profil utilisateur
+     * Attribut username requis
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

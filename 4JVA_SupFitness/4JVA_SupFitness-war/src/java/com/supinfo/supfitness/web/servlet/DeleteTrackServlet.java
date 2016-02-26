@@ -9,7 +9,6 @@ import com.supinfo.supfitness.ejb.business.TrackBusiness;
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.web.util.ConverterUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,8 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author Antonin
+ * Servlet ayant pour fonctionnalité de supprimer un Track
  */
 public class DeleteTrackServlet extends HttpServlet {
 
@@ -28,12 +26,8 @@ public class DeleteTrackServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Supprime un track
+     * Prends en paramètre trackId
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

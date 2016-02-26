@@ -7,21 +7,26 @@ package com.supinfo.supfitness.web.servlet;
 
 import com.supinfo.supfitness.ejb.business.RaceBusiness;
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
-import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import java.io.IOException;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Servlet ayant pour fonctionnalité d'afficher les détails d'un Race
+ */
 public class DetailsRaceServlet extends HttpServlet {
 
     @EJB
     RaceBusiness raceBusiness;
     
     @Override
+    /**
+     * Récupère la page de détails d'un Race
+     * Prends en paramètre raceId
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String raceIdStr = req.getParameter("raceId");
         if(raceIdStr == null || raceIdStr.length() == 0){

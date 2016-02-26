@@ -5,25 +5,18 @@
  */
 package com.supinfo.supfitness.web.servlet;
 
-import com.sun.xml.rpc.processor.modeler.j2ee.xml.string;
 import com.supinfo.supfitness.ejb.business.RaceBusiness;
 import com.supinfo.supfitness.ejb.business.TrackBusiness;
-import com.supinfo.supfitness.ejb.business.UserBusiness;
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.web.util.ConverterUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,8 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author Antonin
+ * Servlet ayant pour fonctionnalité d'ajouter un Track
  */
 @WebServlet(name = "AddTrackServlet", urlPatterns = {"/AddTrack"})
 public class AddTrackServlet extends HttpServlet {
@@ -46,12 +38,8 @@ public class AddTrackServlet extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Récupère la page d'ajout de Track
+     * Prends en paramètre raceId
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -70,12 +58,8 @@ public class AddTrackServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Ajoute un Track
+     * Prends en paramètre raceId
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

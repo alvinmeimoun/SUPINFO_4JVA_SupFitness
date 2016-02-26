@@ -9,10 +9,8 @@ import com.supinfo.supfitness.ejb.business.RaceBusiness;
 import com.supinfo.supfitness.ejb.business.UserBusiness;
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
 import com.supinfo.supfitness.ejb.entity.UserEntity;
-import com.supinfo.supfitness.ejb.facade.RaceFacade;
 import com.supinfo.supfitness.web.util.ConverterUtil;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -22,8 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author Antonin
+ * Servlet ayant pour fonctionnalité d'afficher les Races
  */
 @WebServlet(name = "ListRacesServlet", urlPatterns = {"/ListRaces"})
 public class ListRacesServlet extends HttpServlet {
@@ -35,12 +32,7 @@ public class ListRacesServlet extends HttpServlet {
     private UserBusiness userBusiness;
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Récupère la page de liste de Race
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

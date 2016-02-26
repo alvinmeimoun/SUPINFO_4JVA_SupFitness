@@ -16,18 +16,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * Servlet ayant pour fonctionnalité de gérer les inscription
+ */
 public class RegisterServlet extends HttpServlet {
 
     @EJB
     private UserBusiness userBusiness;
     
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Affiche la page d'inscription
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,12 +36,7 @@ public class RegisterServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Récupération du formulaire d'inscription
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

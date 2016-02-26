@@ -6,15 +6,25 @@
 package com.supinfo.supfitness.web.util;
 
 /**
- *
- * @author Antonin
+ * Utilitaires de conversions
  */
 public abstract class ConverterUtil {
     
+    /**
+     * Récupère d'un attribut d'une requête un object Long
+     * @param requestAttribute Valeur de l'attribut de requête
+     * @return Valeur Long de l'object
+     */
     public static Long ConvertRequestParameterToLong(Object requestAttribute)
     {
         return Long.valueOf(String.valueOf(requestAttribute));
     }
+    
+    /**
+     * Récupère d'un attribut d'une requête un object String
+     * @param requestAttribute Valeur de l'attribut de requête
+     * @return Valeur String de l'object
+     */
     public static String ConvertRequestParameterToString(Object requestAttribute)
     {
         return String.valueOf(requestAttribute); 

@@ -5,15 +5,10 @@
  */
 package com.supinfo.supfitness.web.servlet;
 
-import com.supinfo.supfitness.ejb.entity.RaceEntity;
-import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.ejb.entity.UserEntity;
 import com.supinfo.supfitness.ejb.facade.RaceFacade;
 import com.supinfo.supfitness.ejb.facade.UserFacade;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -22,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.codec.digest.DigestUtils;
 
+/**
+ * Servlet ayant pour fonctionnalité de s'authentifier
+ */
 public class LoginServlet extends HttpServlet {
 
     @EJB
@@ -31,12 +29,7 @@ public class LoginServlet extends HttpServlet {
     private RaceFacade raceFacade;
     
     /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Récupère la page de login
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,12 +39,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * Récupération du formulaire de login
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
