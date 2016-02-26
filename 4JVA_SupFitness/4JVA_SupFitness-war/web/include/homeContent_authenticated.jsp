@@ -7,11 +7,21 @@
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% RaceEntity raceModel = (RaceEntity) request.getAttribute("raceDetails");
+<%
+   
+ if(request.getAttribute("newUser") == "true") { %>
+     <div class="row bs-docs-header" style="height:100px;">
+        <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Bienvenue sur SupFitness !</h2></p></br>
+     </div>
+    <div class="container">
+       <a class="btn btn-info" href="AddRace">Ajouter une course !</a>
+    </div>
+
+<% }else { %>
+ <% 
+   RaceEntity raceModel = (RaceEntity) request.getAttribute("raceDetails");
    int trackCounts = (Integer)request.getAttribute("tracksCount");
 %>
-
-
             <div class="row bs-docs-header" style="height:100px;">
                 <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Ma dernière course : <%= raceModel.getName() %></h2></p></br>
             </div>
@@ -55,7 +65,6 @@
             </div>
         </div>
 
-    
     <!-- Google Map API -->
     <style type="text/css">
         #map {
@@ -64,6 +73,7 @@
         }
     </style>
     <script type="text/javascript">
+
         var points;
         var map;
         function initMap() {
@@ -116,3 +126,4 @@
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfDi5eg8sWA5DumJtUKdqFA1ITz1wH8E&callback=initMap" type="text/javascript"></script>
         
+<% } %>

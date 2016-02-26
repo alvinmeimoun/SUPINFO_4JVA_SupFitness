@@ -57,9 +57,17 @@ public class HomeServlet extends HttpServlet {
         else 
         {
             UserEntity user = userBusiness.find(ConverterUtil.ConvertRequestParameterToLong(request.getAttribute("userId")));
+            int raceCount = raceBusiness.findAllByUser(user).size();
+            if(raceCount != 0)
+            {
             RaceEntity race = raceBusiness.getLastRaceByUser(user);
             request.setAttribute("raceDetails", race);
             request.setAttribute("tracksCount", race.getTracks().size());
+            }
+            else 
+            {
+                request.setAttribute("newUser", "true");
+            }
         }
         
         

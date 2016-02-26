@@ -89,8 +89,9 @@ public class AddRaceServlet extends HttpServlet {
        
         race.setUser(user);
         raceBusiness.addOrUpdateRace(race);
-        RequestDispatcher rd = request.getRequestDispatcher("ListRaces");
-        rd.forward(request, response);
+        //RequestDispatcher rd = request.getRequestDispatcher("ListRaces");
+        //rd.forward(request, response);
+        response.sendRedirect("ListRaces");
     }
 
     /**

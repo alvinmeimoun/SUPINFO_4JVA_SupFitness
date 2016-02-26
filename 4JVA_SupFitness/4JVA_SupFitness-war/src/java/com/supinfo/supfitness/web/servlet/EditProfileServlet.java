@@ -5,10 +5,13 @@
  */
 package com.supinfo.supfitness.web.servlet;
 
+import static com.sun.org.apache.xml.internal.serializer.utils.Utils.messages;
 import com.supinfo.supfitness.ejb.business.UserBusiness;
 import com.supinfo.supfitness.ejb.entity.UserEntity;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -62,15 +65,20 @@ public class EditProfileServlet extends HttpServlet {
         String cookieUsername = (String) request.getAttribute("username");
         UserEntity user = userBusiness.findByUsername(cookieUsername);
         
-        //user.setUserName(request.getParameter("username"));
-        user.setEmail(request.getParameter("email"));
-        user.setFirstName(request.getParameter("firstname"));
-        user.setLastName(request.getParameter("lastname"));
-        user.setPostalCode(request.getParameter("postalcode"));
-        
+        String email = request.getParameter("email");
+        String firstname = request.getParameter("firstname");
+        String lastname = request.getParameter("lastname");
+        String postalCode = request.getParameter("postalcode");
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
         String confirmNewPassword = request.getParameter("confirmNewPassword");
+       
+        //user.setUserName(request.getParameter("username"));
+        user.setEmail(email);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
+        user.setPostalCode(postalCode);
+        
         
         if(oldPassword != null && newPassword != null && confirmNewPassword != null
                 && oldPassword.length() > 0 && newPassword.length() > 0 &&
@@ -87,12 +95,34 @@ public class EditProfileServlet extends HttpServlet {
             }
             else{
                 System.out.println("Bad Old Password");
+                
             }
         }
+    
+        //Voir pour la gestion du nouveau password
+        if(email.length() > 0 && firstname.length() > 0 && lastname.length() > 0 
+                && postalCode.length() == 5 && oldPassword != null ){
+                
+            if(user.getPassword().equals(DigestUtils.sha256Hex(oldPassword))){
+                userBusiness.addOrUpdateUser(user);
+                response.sendRedirect("home");
+                
+                }
+            else{
+                System.out.println("Mot de passe incorrect");
+                response.sendRedirect("editProfile");
+                }
         
-        userBusiness.addOrUpdateUser(user);
+        }
+        else{
+            System.out.println("Erreur sur les champs");
+            response.sendRedirect("editProfile");
+            //response.sendRedirect("editProfile?listError=true");
+            
+        }
+        
        
-        response.sendRedirect("home");
+        
        
     }
 
