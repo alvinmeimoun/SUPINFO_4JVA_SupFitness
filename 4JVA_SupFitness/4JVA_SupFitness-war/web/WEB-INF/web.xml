@@ -137,8 +137,10 @@
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-name>AddTrackServlet</servlet-name>
         <servlet-name>DeleteTrackServlet</servlet-name>
+        <servlet-name>DeleteRaceServlet</servlet-name>
         <servlet-name>ListTracksServlet</servlet-name>
         <servlet-name>AddRaceServlet</servlet-name>
+        <servlet-name>EditProfileServlet</servlet-name>
     </filter-mapping>
     <!-- AuthManager Filter -->
     <filter>
