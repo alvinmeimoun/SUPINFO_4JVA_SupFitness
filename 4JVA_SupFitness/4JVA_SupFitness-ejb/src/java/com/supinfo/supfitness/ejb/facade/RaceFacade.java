@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.supinfo.supfitness.ejb.facade;
 
 import com.supinfo.supfitness.ejb.entity.RaceEntity;
@@ -19,31 +14,53 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- *
- * @author Antonin
+ * Méthodes d'accès à la BDD pour l'entité Race
  */
 @Stateless
 public class RaceFacade {
     @PersistenceContext(unitName = "4JVA_SupFitness-ejbPU")
     private EntityManager em;
 
+    /**
+     * Ajoute une nouvelle entité
+     * @param raceEntity RaceEntity à ajouter
+     */
     public void create(RaceEntity raceEntity) {
         em.persist(raceEntity);
     }
 
+    /**
+     * Modifie une entité existante
+     * @param raceEntity Entité à mettre à jour
+     */
     public void edit(RaceEntity raceEntity) {
         em.merge(raceEntity);
     }
 
+    /**
+     * Supprime une entité de la BDD
+     * @param raceEntity RaceEntity
+     */
     public void remove(RaceEntity raceEntity) {
         em.remove(em.merge(raceEntity));
     }
 
+    /**
+     * Récupère une entité par son ID
+     * @param id ID de la Race à récupérer
+     * @return RaceEntity
+     */
     public RaceEntity find(Long id) {
         return em.find(RaceEntity.class, id);
     }
-   public RaceEntity getLastRaceByUser(UserEntity user)
-   {
+    
+    /**
+     * Récupère la dernière Race liée à un utilisateur
+     * @param user Entité de l'utilisateur
+     * @return RaceEntity
+     */
+    public RaceEntity getLastRaceByUser(UserEntity user)
+    {
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<RaceEntity> q = criteriaBuilder.createQuery(RaceEntity.class);
         Root<RaceEntity> race = q.from(RaceEntity.class);
@@ -54,9 +71,15 @@ public class RaceFacade {
         
         return em.createQuery(q).setMaxResults(1).getSingleResult();
        
-   }
+    }
     
-   public List<RaceEntity> findAllByUser(UserEntity user) throws NoResultException{
+    /**
+     * Récupère toutes les Race liées à un utilisateur
+     * @param user UserEntity
+     * @return List de RaceEntity
+     * @throws NoResultException aucune Race trouvée
+     */
+    public List<RaceEntity> findAllByUser(UserEntity user) throws NoResultException{
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<RaceEntity> criteriaQuery = criteriaBuilder.createQuery(RaceEntity.class);
         Root<RaceEntity> race = criteriaQuery.from(RaceEntity.class);
@@ -71,12 +94,21 @@ public class RaceFacade {
         }
     }
 
+    /**
+     * Récupère toutes les Race de la base de données
+     * @return Liste de RaceEntity
+     */
     public List<RaceEntity> findAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(RaceEntity.class));
         return em.createQuery(cq).getResultList();
     }
 
+    /**
+     * Récupère un certains nombre de Race
+     * @param range Tableau à 2 valeurs indiquant en première position la position de départ et en deuxième la position limite
+     * @return Liste de RaceEntity
+     */
     public List<RaceEntity> findRange(int[] range) {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(RaceEntity.class));
@@ -86,6 +118,9 @@ public class RaceFacade {
         return q.getResultList();
     }
 
+    /**
+     * @return Nombre de Race existantes en base de données
+     */
     public int count() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         Root<RaceEntity> rt = cq.from(RaceEntity.class);

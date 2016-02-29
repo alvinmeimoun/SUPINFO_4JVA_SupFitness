@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.supinfo.supfitness.ejb.facade;
 
 import com.supinfo.supfitness.ejb.entity.RaceEntity_;
@@ -18,27 +13,52 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+/**
+ * Méthodes d'accès à la BDD pour l'entité Race
+ */
 @Stateless
 public class TrackFacade {
-   @PersistenceContext(unitName = "4JVA_SupFitness-ejbPU")
+    @PersistenceContext(unitName = "4JVA_SupFitness-ejbPU")
     private EntityManager em;
 
+    /**
+     * Insert un Track dans la base de données
+     * @param trackEntity TrackEntity à ajouter
+     */
     public void create(TrackEntity trackEntity) {
         em.persist(trackEntity);
     }
 
+    /**
+     * Modifie un Track dans la base de données
+     * @param trackEntity TrackEntity à modifier
+     */
     public void edit(TrackEntity trackEntity) {
         em.merge(trackEntity);
     }
 
+    /**
+     * Supprime un Track dans la base de données
+     * @param trackEntity TrackEntity à supprimer
+     */
     public void remove(TrackEntity trackEntity) {
         em.remove(em.merge(trackEntity));
     }
 
+    /**
+     * Récupère un track par son ID
+     * @param id ID du track à récupérer
+     * @return TrackEntity
+     */
     public TrackEntity find(Long id) {
         return em.find(TrackEntity.class, id);
     }
     
+    /**
+     * Récupère la liste des Track d'une Race
+     * @param raceId ID de la Race
+     * @return Liste de TrackEntity
+     */
     public List<TrackEntity> findByRaceId(Long raceId){
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<TrackEntity> criteriaQuery = criteriaBuilder.createQuery(TrackEntity.class);
@@ -55,27 +75,22 @@ public class TrackFacade {
             return null;
         }
     }
-    
-   /* public TrackEntity findByUsername(String username) throws NoResultException{
-        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
-        CriteriaQuery<TrackEntity> criteriaQuery = criteriaBuilder.createQuery(TrackEntity.class);
-        Root<TrackEntity> user = criteriaQuery.from(TrackEntity.class);
-        
-        criteriaQuery.where(criteriaBuilder.equal(user.get(TrackEntity_.), username));
-        
-        try{
-            return em.createQuery(criteriaQuery).getSingleResult();
-        } catch (NoResultException nre){
-            return null;
-        }
-    }*/
 
+    /**
+     * Récupère la liste de toutes les Tracks
+     * @return Liste de TrackEntity
+     */
     public List<TrackEntity> findAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(TrackEntity.class));
         return em.createQuery(cq).getResultList();
     }
 
+    /**
+     * Récupère un certains nombre de Track
+     * @param range Tableau à 2 valeurs indiquant en première position la position de départ et en deuxième la position limite
+     * @return Liste de TrackEntity
+     */
     public List<TrackEntity> findRange(int[] range) {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(TrackEntity.class));
@@ -85,6 +100,9 @@ public class TrackFacade {
         return q.getResultList();
     }
 
+    /**
+     * @return Nombre de Track dans la base de données
+     */
     public int count() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         Root<TrackEntity> rt = cq.from(TrackEntity.class);

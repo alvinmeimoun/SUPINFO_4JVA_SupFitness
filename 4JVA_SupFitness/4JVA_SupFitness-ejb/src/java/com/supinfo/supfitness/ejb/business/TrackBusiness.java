@@ -5,7 +5,6 @@
  */
 package com.supinfo.supfitness.ejb.business;
 
-import com.supinfo.supfitness.ejb.entity.RaceEntity;
 import com.supinfo.supfitness.ejb.entity.TrackEntity;
 import com.supinfo.supfitness.ejb.facade.TrackFacade;
 import java.util.List;
@@ -15,6 +14,9 @@ import javax.ejb.Stateless;
 
 
 
+/**
+ * Logique correspondant à l'entité Track
+ */
 @Stateless
 @LocalBean
 public class TrackBusiness  {
@@ -28,8 +30,7 @@ public class TrackBusiness  {
         return trackFacade.findAll();
     }
     /**
-     * Create or update a new track
-     * @param trackObject TrackEntity
+     * Insert ou met à jour un Track
      */
     public void addOrUpdateTrack(TrackEntity trackObject){
         boolean isNew = false;
@@ -47,6 +48,11 @@ public class TrackBusiness  {
         }
     }
     
+    /**
+     * Récupère la liste de tout les tracks
+     * @param raceId null : tout les tracks<br/>Autre : Tout les tracks d'un Race
+     * @return Liste de TrackEntity
+     */
     public List<TrackEntity> findAllTrack(Long raceId){
         if(raceId == null){
             return trackFacade.findAll();
@@ -55,10 +61,21 @@ public class TrackBusiness  {
         }
     }
     
+    /**
+     * Récupère un Track
+     * @param trackId ID du track à récupérer
+     * @return TrackEntity
+     */
     public TrackEntity find(Long trackId)
     {
         return trackFacade.find(trackId);
     }
+    
+    /**
+     * Supprime un track
+     * @param track TrackEntity à supprimer
+     * @return Succès
+     */
     public boolean deleteTrack(TrackEntity track){
        
           try 

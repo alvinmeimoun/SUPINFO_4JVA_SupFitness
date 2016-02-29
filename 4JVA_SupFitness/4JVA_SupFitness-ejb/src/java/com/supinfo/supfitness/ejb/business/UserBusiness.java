@@ -8,6 +8,9 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 
+/**
+ * Logique correspondant à l'entité User
+ */
 @Stateless
 @LocalBean
 public class UserBusiness {
@@ -18,12 +21,18 @@ public class UserBusiness {
     public UserBusiness(){
         
     }
-     public List<UserEntity> findAll(){
+    
+    /**
+     * Récupèré la liste de tous les utilisateurs
+     * @return Liste de UserEntity
+     */
+    public List<UserEntity> findAll(){
         return userFacade.findAll();
     }
+    
     /**
-     * Create or update a new user
-     * @param userObject UserEntity
+     * Insert ou met à jour un User
+     * @param userObject UserEntity à ajouter
      */
     public void addOrUpdateUser(UserEntity userObject){
         boolean isNew = false;
@@ -41,12 +50,22 @@ public class UserBusiness {
         }
     }
     
+    /**
+     * Récupère un User par son nom d'utilisateur
+     * @param username Nom d'utilisateur
+     * @return UserEntity
+     * @throws NoResultException Aucun utilisateur éxistant pour ce nom d'utilisateur
+     */
     public UserEntity findByUsername(String username) throws NoResultException{
         return userFacade.findByUsername(username);
     }
     
-
- public UserEntity find(Long id) {
+    /**
+     * Récupère un User par son id
+     * @param id ID de l'utilisateur
+     * @return UserEntity
+     */
+    public UserEntity find(Long id) {
          
          return userFacade.find(id);
      }
