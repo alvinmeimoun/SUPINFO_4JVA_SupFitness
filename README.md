@@ -12,3 +12,6 @@ Les documentations associés se situent dans le dossier Documentation
 
 3 : REST API
 	La documentation concernant l'utilisation de l'API REST est disponible au format pdf et docx dans le dossier Documentation nommé "REST API Documentation".jdbc/supfitness
+
+4 : Liste des membres du groupe
+	La liste des membres du groupe est disponible dans le fichier group_members.txt
