@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost:3306
--- Généré le :  Jeu 18 Février 2016 à 15:11
+-- Généré le :  Lun 29 Février 2016 à 09:11
 -- Version du serveur :  5.5.42
 -- Version de PHP :  7.0.0
 
@@ -22,7 +22,7 @@ USE `supfitness`;
 -- Structure de la table `RACE`
 --
 
-CREATE TABLE `RACE` (
+CREATE TABLE IF NOT EXISTS `RACE` (
   `ID` bigint(20) NOT NULL,
   `NAME` varchar(255) NOT NULL,
   `user_id` bigint(20) NOT NULL,
@@ -43,14 +43,14 @@ INSERT INTO `RACE` (`ID`, `NAME`, `user_id`, `STARTDATE`) VALUES
 -- Structure de la table `TRACK`
 --
 
-CREATE TABLE `TRACK` (
+CREATE TABLE IF NOT EXISTS `TRACK` (
   `ID` bigint(20) NOT NULL,
   `LATITUDE` double NOT NULL,
   `LONGITUDE` double NOT NULL,
   `SPEED` double NOT NULL,
   `race_id` bigint(20) DEFAULT NULL,
   `STARTDATE` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `TRACK`
@@ -67,7 +67,7 @@ INSERT INTO `TRACK` (`ID`, `LATITUDE`, `LONGITUDE`, `SPEED`, `race_id`, `STARTDA
 -- Structure de la table `USER`
 --
 
-CREATE TABLE `USER` (
+CREATE TABLE IF NOT EXISTS `USER` (
   `ID` bigint(20) NOT NULL,
   `EMAIL` varchar(255) NOT NULL,
   `FIRSTNAME` varchar(255) NOT NULL,
@@ -75,7 +75,7 @@ CREATE TABLE `USER` (
   `PASSWORD` varchar(255) NOT NULL,
   `USERNAME` varchar(255) NOT NULL,
   `POSTALCODE` varchar(5) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `USER`
@@ -122,12 +122,12 @@ ALTER TABLE `RACE`
 -- AUTO_INCREMENT pour la table `TRACK`
 --
 ALTER TABLE `TRACK`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT pour la table `USER`
 --
 ALTER TABLE `USER`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Contraintes pour les tables exportées
 --
@@ -143,4 +143,3 @@ ALTER TABLE `RACE`
 --
 ALTER TABLE `TRACK`
   ADD CONSTRAINT `FK_TRACK_race_id` FOREIGN KEY (`race_id`) REFERENCES `RACE` (`ID`);
-
