@@ -13,19 +13,19 @@
                 <input type="hidden" name="userId" value="${requestScope.userId}"/>
                 <input type="hidden" name="raceId" value="${requestScope.raceId}"/>
                 <label for="latitude">Latitude</label>
-                <input type="text" id="latitude" name="latitude" class="form-control" placeholder="Latitude"/>
+                <input type="text" pattern="[0-9]+([\.,][0-9]+)?" id="latitude" name="latitude" class="form-control" placeholder="Latitude" required="true"/>
             </div>
             <div>
                 <label for="longitude">Longitude</label>
-                <input type="text" id="longitude" name="longitude" class="form-control" placeholder="Longitude"/>
+                <input type="text" pattern="[0-9]+([\.,][0-9]+)?" id="longitude" name="longitude" class="form-control" placeholder="Longitude" required="true"/>
             </div>
             <div>
                 <label for="speed">Speed</label>
-                <input type="text" id="speed" name="speed" class="form-control" placeholder="Speed"/>
+                <input type="text"  pattern="[0-9]+([\.,][0-9]+)?" id="speed" name="speed" class="form-control" placeholder="Speed" required="true"/>
             </div>
             <div>
                 <label for="startDate">Date</label>
-                <input type="datetime-local" id="startDate" name="startDate" class="form-control" />
+                <input type="datetime-local" id="startDate" name="startDate" class="form-control" required="true"/>
             </div>
                 <br>
             <div>

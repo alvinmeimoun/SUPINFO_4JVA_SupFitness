@@ -12,11 +12,11 @@
             <div>
                 <input type="hidden" name="userId" value="${requestScope.userId}"/>
                 <label for="name">Nom de la race</label>
-                <input type="text" id="name" name="name" class="form-control" placeholder="Nom de la race"/>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Nom de la race" required="true"/>
             </div>
             <div>
                 <label for="date">Date</label>
-                <input type="date" id="startDate" name="startDate" class="form-control" />
+                <input type="date" id="startDate" name="startDate" class="form-control" required="true"/>
             </div>
                 <br>
             <div>
