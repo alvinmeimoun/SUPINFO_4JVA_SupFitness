@@ -12,7 +12,7 @@
 %>
 
 
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEfDi5eg8sWA5DumJtUKdqFA1ITz1wH8E&callback=initMap" type="text/javascript"></script>
+        
         <!-- Facebook SDK -->
         <div id="fb-root"></div>
         <script>(function(d, s, id) {

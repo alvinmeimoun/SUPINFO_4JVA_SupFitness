@@ -7,6 +7,7 @@
     <p><h2 class="" style="font-size:20px; margin: 10px; color:white;">Modifier votre profil</h2></p></br>
 </div>
   <div class="container">
+      <%if(request.getAttribute("user") != null ) { %>
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
                 <div class="account-wall">
@@ -61,6 +62,7 @@ onchange="this.setCustomValidity('')" required/>
             </div>
            
         </form>
+<% }%>
        </div>
 <footer>
 <jsp:include page="../include/footer.jspf" />

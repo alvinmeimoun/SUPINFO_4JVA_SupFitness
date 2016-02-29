@@ -54,24 +54,35 @@ public class RegisterServlet extends HttpServlet {
         user.setEmail(email);
         user.setFirstName(firstname);
         user.setLastName(lastname);
-        user.setPassword(DigestUtils.sha256Hex(
-                password));
+        user.setPassword(DigestUtils.sha256Hex(password));
         user.setUserName(username);
+        try 
+        {
         user.setPostalCode(postalCode);
-        
-        /*userBusiness.addOrUpdateUser(user);
-        
-        RequestDispatcher rd = request.getRequestDispatcher("login");
-        rd.forward(request, response);
-        */
-        
-        
-        
+        }
+        catch(Exception e)
+        {
+             response.sendRedirect("register?registerFailed=true"
+                    + "&username=" + username
+                    + "&firstname=" + firstname
+                    + "&lastname=" + lastname
+                    + "&email=" + email
+                    + "&password=" + password
+                    + "&errorMessage=" + "Le code postal est incorrect."
+            );
+        }
         if(userBusiness.findByUsername(username) != null){
-            System.out.println("Existant");
             
-            request.setAttribute("error", "Nom d'utilisateur déjà existant");
-            response.sendRedirect("register");
+            
+            response.sendRedirect("register?registerFailed=true"
+                    + "&username=" + username
+                    + "&firstname=" + firstname
+                    + "&lastname=" + lastname
+                    + "&email=" + email
+                    + "&postalcode=" + postalCode
+                    + "&password=" + password
+                    + "&errorMessage=" + "Le nom d'utilisateur existe deja."
+            );
             
         }
         //Username n'est pas dans la BDD
