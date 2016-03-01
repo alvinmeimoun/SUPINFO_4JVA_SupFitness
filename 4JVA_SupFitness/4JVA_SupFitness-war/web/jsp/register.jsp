@@ -18,6 +18,14 @@
                     <% }
                             
                 %>
+                
+                <% if(request.getAttribute("errorMessage") != null) { 
+                            %>
+                            <p style="color:red"><%= request.getAttribute("errorMessage") %></p>
+                        
+                    <% }
+                            
+                %>
                 </div>
         <form action="register" method="POST" class="form-signin">
             <div>
@@ -44,7 +52,7 @@ onchange="this.setCustomValidity('')" required/>
             
             <div>
                 <label for="postalcode">Code postal</label>
-                <input type="text" id="postalcode" name="postalcode" <% if(request.getParameter("postalcode") != null) { %> value=" <%= request.getParameter("postalcode") %>"  <%}%> class="form-control" placeholder="Code postal" maxlength="5" oninvalid="this.setCustomValidity('Veuillez entrer 5 chiffres')" 
+                <input type="text" id="postalcode" name="postalcode" <% if(request.getParameter("postalcode") != null) { %> value=" <%= request.getParameter("postalcode") %>"  <%}%> class="form-control" placeholder="Code postal"  oninvalid="this.setCustomValidity('Veuillez entrer 5 chiffres du code postal')" 
 onchange="this.setCustomValidity('')" required/>
             </div>
             

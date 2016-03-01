@@ -71,6 +71,7 @@ public class RegisterServlet extends HttpServlet {
                     + "&errorMessage=" + "Le code postal est incorrect."
             );
         }
+        
         if(userBusiness.findByUsername(username) != null){
             
             
@@ -88,18 +89,20 @@ public class RegisterServlet extends HttpServlet {
         //Username n'est pas dans la BDD
         else{
             
-                if(username.length() > 0 && email.length() > 0 && firstname.length() > 0 && lastname.length() > 0 
-                    && postalCode.length() == 5 && password != null  ){
+                if(username.length() > 0 && email.length() > 0 && firstname.length() > 0 && lastname.length() > 0 && postalCode.length() > 0
+                    && password != null  ){
 
-                     userBusiness.addOrUpdateUser(user);
-                     RequestDispatcher rd = request.getRequestDispatcher("login");
-                     rd.forward(request, response);
-
-                }
-
+                        userBusiness.addOrUpdateUser(user);
+                        RequestDispatcher rd = request.getRequestDispatcher("login");
+                        rd.forward(request, response);
+                    }
+                    
             else{
                 System.out.println("Erreur sur les champs");
-                response.sendRedirect("register");
+                
+                request.setAttribute("errorMessage", "Il y a des erreurs sur les champs");
+                //response.sendRedirect("editProfile");
+                this.doGet(request, response);
             }
         }
        

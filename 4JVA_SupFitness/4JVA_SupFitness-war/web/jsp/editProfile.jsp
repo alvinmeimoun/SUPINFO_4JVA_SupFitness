@@ -11,6 +11,25 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4">
                 <div class="account-wall">
+                    <div class="text-center login-message">
+                        <% if(request.getParameter("profileFailed") != null
+                            && request.getParameter("profileFailed").equals("true")) { 
+                            %>
+                            <p style="color:red"><%= request.getParameter("errorMessage") %></p>
+                        
+                    <% }
+                            
+                %>
+                
+                <% if(request.getAttribute("errorMessage") != null) { 
+                            %>
+                            <p style="color:red"><%= request.getAttribute("errorMessage") %></p>
+                        
+                    <% }
+                            
+                %>
+               
+                </div>
         <form action="editProfile" method="POST" class="form-signin">
             <div>
                 <label for="username">Nom d'utilisateur</label>
